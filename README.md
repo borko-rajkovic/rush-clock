@@ -37,5 +37,6 @@ Clock that rushes.
 - rush to a desired target
 - enable rush from
 - more easing functions (?)
+- icon
 
   -->
