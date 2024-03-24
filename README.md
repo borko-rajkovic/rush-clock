@@ -6,7 +6,7 @@ Clock that rushes.
 
 ## Features
 
-- [ ] Rush clock
+- [x] Rush clock
 - [ ] Customize rush coefficient
 - [ ] Show a faded real clock
 - [ ] Preview rush behavior
@@ -27,8 +27,6 @@ Clock that rushes.
 
 <!--
 
-- implement clock
-- rush the clock
 - slider for a rush coefficient
 - rush preview
 - standalone rush clock
@@ -38,5 +36,8 @@ Clock that rushes.
 - enable rush from
 - more easing functions (?)
 - icon
+- alarm?
+- rush for 1 hour
+- rush work hours
 
   -->
