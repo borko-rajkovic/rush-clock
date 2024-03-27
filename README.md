@@ -8,7 +8,7 @@ Clock that rushes.
 
 - [x] Rush clock
 - [ ] Customize rush coefficient
-- [ ] Show a faded real clock
+- [x] Show a faded real clock
 - [ ] Preview rush behavior
 - [ ] Create a standalone rush clock
 - [ ] Embedded rush clock
