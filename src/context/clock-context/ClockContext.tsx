@@ -1,16 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { calculateClock } from "./clock-utils/clock-utils";
 import { ClockContextType } from "./ClockContextType";
 import { sleep } from "./clock-utils/analog/analog-clock-utils";
+import { FeaturesContext } from "../features-context/FeaturesContext";
 
 export const ClockContext: React.Context<ClockContextType> = createContext(
-  calculateClock()
+  calculateClock(2)
 );
 
+let currentTickId = crypto.randomUUID();
+
 const updateClock = (
-  setClock: React.Dispatch<React.SetStateAction<ClockContextType>>
+  setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
+  rushCoefficient: number
 ) => {
-  const clock = calculateClock();
+  const clock = calculateClock(rushCoefficient);
   setClock(clock);
 };
 
@@ -28,20 +32,30 @@ const updateClock = (
  * should give us a more accurate clock.
  */
 const tickClock = async (
-  setClock: React.Dispatch<React.SetStateAction<ClockContextType>>
+  tickClockId: string,
+  setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
+  rushCoefficient: number
 ) => {
   await sleep(1000 - new Date().getMilliseconds());
-  updateClock(setClock);
 
-  tickClock(setClock);
+  if (tickClockId !== currentTickId) {
+    return;
+  }
+
+  updateClock(setClock, rushCoefficient);
+
+  tickClock(tickClockId, setClock, rushCoefficient);
 };
 
 const ContextClock = ({ children }: { children: React.ReactNode }) => {
-  const [clock, setClock] = useState(calculateClock());
+  const [clock, setClock] = useState(calculateClock(2));
+  const { rushCoefficient } = useContext(FeaturesContext);
 
   useEffect(() => {
-    tickClock(setClock);
-  }, []);
+    currentTickId = crypto.randomUUID();
+    updateClock(setClock, rushCoefficient);
+    tickClock(currentTickId, setClock, rushCoefficient);
+  }, [rushCoefficient]);
 
   return (
     <ClockContext.Provider value={clock}>{children}</ClockContext.Provider>

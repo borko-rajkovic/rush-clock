@@ -6,6 +6,8 @@ const defaultValues: FeaturesContextType = {
   setShadowVisible: () => {},
   clock24Type: true,
   setClock24Type: () => {},
+  rushCoefficient: 2,
+  setRushCoefficient: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -14,10 +16,18 @@ export const FeaturesContext: React.Context<FeaturesContextType> =
 const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(true);
+  const [rushCoefficient, setRushCoefficient] = useState(2);
 
   return (
     <FeaturesContext.Provider
-      value={{ shadowVisible, setShadowVisible, clock24Type, setClock24Type }}
+      value={{
+        shadowVisible,
+        setShadowVisible,
+        clock24Type,
+        setClock24Type,
+        rushCoefficient,
+        setRushCoefficient,
+      }}
     >
       {children}
     </FeaturesContext.Provider>

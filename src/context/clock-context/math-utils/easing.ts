@@ -7,7 +7,8 @@ const easeOut = (x: number, coefficient = 2): number => {
 export const calculateEasedOutDate = (
   date: number,
   easeStart: number,
-  easeFinish: number
+  easeFinish: number,
+  rushCoefficient: number
 ) => {
   if (date < easeStart || date > easeFinish) {
     return new Date(date);
@@ -15,7 +16,7 @@ export const calculateEasedOutDate = (
 
   const currentPosition = normalize(date, easeStart, easeFinish);
 
-  const easedOutNormalized = easeOut(currentPosition, 2);
+  const easedOutNormalized = easeOut(currentPosition, rushCoefficient);
 
   const easedOut = mapInRange(easedOutNormalized, 0, 1, easeStart, easeFinish);
 
