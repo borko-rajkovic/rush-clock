@@ -7,10 +7,10 @@ Clock that rushes.
 ## Features
 
 - [x] Rush clock
-- [ ] Customize rush coefficient
+- [x] Customize rush coefficient
 - [x] Show a faded real clock
 - [ ] Preview rush behavior
-- [ ] Create a standalone rush clock
+- [x] Create a standalone rush clock
 - [ ] Embedded rush clock
 - [ ] Rush to a selected time from now
 - [ ] Rush in a selected time range
@@ -27,11 +27,8 @@ Clock that rushes.
 
 <!--
 
-- slider for a rush coefficient
 - rush preview
-- standalone rush clock
 - embedded rush clock
-- make an option to show faded real clock
 - rush to a desired target
 - enable rush from
 - more easing functions (?)
@@ -39,5 +36,11 @@ Clock that rushes.
 - alarm?
 - rush for 1 hour
 - rush work hours
+
+UI:
+
+Colors
+Shadow on the clock circle
+Hour numbers/visuals (number per each hour, lines at every second)
 
   -->

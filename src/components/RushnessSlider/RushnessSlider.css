@@ -1,0 +1,14 @@
+.rushness_slider__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.rushness_slider__input {
+  flex: 5
+}
+
+.rushness_slider__label {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+}
