@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Samples of css and html
+
+samples
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
