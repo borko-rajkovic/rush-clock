@@ -2,11 +2,16 @@ import { FeaturesContextType } from "../../context/features-context/FeaturesCont
 
 export const generateCopyLink = (features: FeaturesContextType) => {
   const rushCoefficient = features.rushCoefficient;
+  const enableShadowClock = features.enableShadowClock;
 
   const urlWithParams = new URL(window.location.href.split("?")[0]);
 
   urlWithParams.searchParams.append("hideAdmin", "true");
   urlWithParams.searchParams.append("rushness", rushCoefficient.toString());
+  urlWithParams.searchParams.append(
+    "enableShadowClock",
+    enableShadowClock.toString()
+  );
 
   return urlWithParams.toString();
 };

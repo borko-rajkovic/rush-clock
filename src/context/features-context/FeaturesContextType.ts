@@ -7,4 +7,6 @@ export type FeaturesContextType = {
   setRushCoefficient: React.Dispatch<React.SetStateAction<number>>;
   hideAdmin: boolean;
   setHideAdmin: React.Dispatch<React.SetStateAction<boolean>>;
+  enableShadowClock: boolean;
+  setEnableShadowClock: React.Dispatch<React.SetStateAction<boolean>>;
 };

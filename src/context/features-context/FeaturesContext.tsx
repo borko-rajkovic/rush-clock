@@ -11,6 +11,8 @@ const defaultValues: FeaturesContextType = {
   setRushCoefficient: () => {},
   hideAdmin: false,
   setHideAdmin: () => {},
+  enableShadowClock: true,
+  setEnableShadowClock: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -24,11 +26,15 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
 
   const rushnessQueryParam = getParam("rushness");
   const hideAdminQueryParam = getParam("hideAdmin");
+  const enableShadowClockQueryParam = getParam("enableShadowClock");
 
   const initialRushCoefficient = rushnessQueryParam
     ? Number(rushnessQueryParam)
     : 2;
   const initialHideAdmin = hideAdminQueryParam === "true";
+  const initialEnableShadowClock = enableShadowClockQueryParam
+    ? enableShadowClockQueryParam === "true"
+    : true;
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(true);
@@ -36,6 +42,9 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     initialRushCoefficient
   );
   const [hideAdmin, setHideAdmin] = useState(initialHideAdmin);
+  const [enableShadowClock, setEnableShadowClock] = useState(
+    initialEnableShadowClock
+  );
 
   return (
     <FeaturesContext.Provider
@@ -46,8 +55,10 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setClock24Type,
         rushCoefficient,
         setRushCoefficient,
-        hideAdmin: hideAdmin,
-        setHideAdmin: setHideAdmin,
+        hideAdmin,
+        setHideAdmin,
+        enableShadowClock,
+        setEnableShadowClock,
       }}
     >
       {children}

@@ -14,7 +14,8 @@ function AnalogClock() {
     },
   } = useContext(ClockContext);
 
-  const { shadowVisible, setShadowVisible } = useContext(FeaturesContext);
+  const { shadowVisible, setShadowVisible, enableShadowClock } =
+    useContext(FeaturesContext);
 
   return (
     <div className="clock__circle">
@@ -27,7 +28,7 @@ function AnalogClock() {
         className="clock__rounder"
         onClick={() => setShadowVisible(!shadowVisible)}
       ></div>
-      {shadowVisible && (
+      {enableShadowClock && shadowVisible && (
         <>
           <div
             style={{
