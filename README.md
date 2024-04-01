@@ -10,9 +10,7 @@ Clock that rushes.
 - [x] Customize rush coefficient
 - [x] Show a faded real clock
 - [ ] Preview rush behavior
-- [x] Create a standalone rush clock
-- [ ] Embedded rush clock
-- [ ] Rush to a selected time from now
+- [x] Generate links to Standalone and Embedded Rush Clock
 - [ ] Rush in a selected time range
 
 ## Contributing
@@ -28,7 +26,6 @@ Clock that rushes.
 <!--
 
 - rush preview
-- embedded rush clock
 - rush to a desired target
 - enable rush from
 - more easing functions (?)

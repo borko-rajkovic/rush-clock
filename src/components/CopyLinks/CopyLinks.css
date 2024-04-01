@@ -1,0 +1,63 @@
+.copy-link-container {
+  width: clamp(20rem, 40rem, 60rem);
+  margin-top: 2rem;
+}
+
+.copy-link {
+  --height: 36px;
+  --roundness: 4px;
+
+  display: flex;
+  padding: 0.25rem;
+}
+
+.copy-link-label {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.copy-link-input {
+  flex: 14;
+  padding: 0 8px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-right: none;
+  outline: none;
+}
+
+.copy-link-input:hover {
+  background-color: #eeeeee;
+}
+
+.copy-link-button {
+  flex: 1;
+  flex-shrink: 0;
+  width: var(--height);
+  height: var(--height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dddddd;
+  color: #333333;
+  outline: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.copy-link-button:hover {
+  background-color: #cccccc;
+}
+
+.copy-link-button:active {
+  background-color: #bbbbbb;
+}
+
+.copy-link-button {
+  border-radius: 0px var(--roundness) var(--roundness) 0px;
+}
+
+.copy-link-input {
+  border-radius: var(--roundness) 0px 0px var(--roundness);
+}

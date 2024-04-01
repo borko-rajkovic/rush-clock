@@ -8,6 +8,7 @@ import ContextFeatures, {
   FeaturesContext,
 } from "./context/features-context/FeaturesContext";
 import { BrowserRouter } from "react-router-dom";
+import CopyLinks from "./components/CopyLinks/CopyLinks";
 
 function Content() {
   const { adminVisible } = useContext(FeaturesContext);
@@ -16,11 +17,13 @@ function Content() {
     <section className="clock container">
       <div className="clock__container grid">
         <div className="clock__content grid">
+          {adminVisible && <div className="title">Rush Clock</div>}
           {adminVisible && <RushnessSlider />}
           <AnalogClock />
           <DigitalClock />
         </div>
       </div>
+      {adminVisible && <CopyLinks />}
     </section>
   );
 }

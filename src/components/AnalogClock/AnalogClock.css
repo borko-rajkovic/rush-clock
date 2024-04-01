@@ -17,6 +17,7 @@
 .clock__content {
   align-self: center;
   row-gap: 2rem;
+  justify-items: center;
 }
 
 .clock__twelve,
