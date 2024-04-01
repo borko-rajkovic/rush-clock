@@ -5,7 +5,7 @@ export const generateCopyLink = (features: FeaturesContextType) => {
 
   const urlWithParams = new URL(window.location.href.split("?")[0]);
 
-  urlWithParams.searchParams.append("adminVisible", "false");
+  urlWithParams.searchParams.append("hideAdmin", "true");
   urlWithParams.searchParams.append("rushness", rushCoefficient.toString());
 
   return urlWithParams.toString();

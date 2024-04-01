@@ -9,8 +9,8 @@ const defaultValues: FeaturesContextType = {
   setClock24Type: () => {},
   rushCoefficient: 2,
   setRushCoefficient: () => {},
-  adminVisible: true,
-  setAdminVisible: () => {},
+  hideAdmin: false,
+  setHideAdmin: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -23,19 +23,19 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     new URLSearchParams(location.search).get(param);
 
   const rushnessQueryParam = getParam("rushness");
-  const adminVisibleQueryParam = getParam("adminVisible");
+  const hideAdminQueryParam = getParam("hideAdmin");
 
   const initialRushCoefficient = rushnessQueryParam
     ? Number(rushnessQueryParam)
     : 2;
-  const initialAdminVisible = adminVisibleQueryParam === "false" ? false : true;
+  const initialHideAdmin = hideAdminQueryParam === "true";
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(true);
   const [rushCoefficient, setRushCoefficient] = useState(
     initialRushCoefficient
   );
-  const [adminVisible, setAdminVisible] = useState(initialAdminVisible);
+  const [hideAdmin, setHideAdmin] = useState(initialHideAdmin);
 
   return (
     <FeaturesContext.Provider
@@ -46,8 +46,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setClock24Type,
         rushCoefficient,
         setRushCoefficient,
-        adminVisible,
-        setAdminVisible,
+        hideAdmin: hideAdmin,
+        setHideAdmin: setHideAdmin,
       }}
     >
       {children}

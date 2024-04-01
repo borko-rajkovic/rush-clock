@@ -1,7 +1,7 @@
 .rushness_slider__container {
   display: flex;
   justify-content: space-evenly;
-  width: 100%;
+  width: 20rem;
 }
 
 .rushness_slider__input {

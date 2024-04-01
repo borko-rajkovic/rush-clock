@@ -5,6 +5,6 @@ export type FeaturesContextType = {
   setClock24Type: React.Dispatch<React.SetStateAction<boolean>>;
   rushCoefficient: number;
   setRushCoefficient: React.Dispatch<React.SetStateAction<number>>;
-  adminVisible: boolean;
-  setAdminVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  hideAdmin: boolean;
+  setHideAdmin: React.Dispatch<React.SetStateAction<boolean>>;
 };

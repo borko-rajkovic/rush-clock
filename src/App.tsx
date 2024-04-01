@@ -11,19 +11,19 @@ import { BrowserRouter } from "react-router-dom";
 import CopyLinks from "./components/CopyLinks/CopyLinks";
 
 function Content() {
-  const { adminVisible } = useContext(FeaturesContext);
+  const { hideAdmin } = useContext(FeaturesContext);
 
   return (
     <section className="clock container">
+      {!hideAdmin && <div className="title">Rush Clock</div>}
+      {!hideAdmin && <RushnessSlider />}
       <div className="clock__container grid">
         <div className="clock__content grid">
-          {adminVisible && <div className="title">Rush Clock</div>}
-          {adminVisible && <RushnessSlider />}
           <AnalogClock />
           <DigitalClock />
         </div>
       </div>
-      {adminVisible && <CopyLinks />}
+      {!hideAdmin && <CopyLinks />}
     </section>
   );
 }
