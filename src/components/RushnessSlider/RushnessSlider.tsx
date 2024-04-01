@@ -7,6 +7,7 @@ function RushnessSlider() {
 
   return (
     <div className="rushness_slider__container">
+      <div>Rushness</div>
       <input
         id="rushnessSlider"
         type="range"

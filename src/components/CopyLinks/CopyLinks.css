@@ -25,6 +25,7 @@
   border: 1px solid #cccccc;
   border-right: none;
   outline: none;
+  border-radius: var(--roundness) 0px 0px var(--roundness);
 }
 
 .copy-link-input:hover {
@@ -56,8 +57,4 @@
 
 .copy-link-button {
   border-radius: 0px var(--roundness) var(--roundness) 0px;
-}
-
-.copy-link-input {
-  border-radius: var(--roundness) 0px 0px var(--roundness);
 }
