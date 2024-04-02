@@ -15,7 +15,8 @@
 }
 
 .clock__content {
-  align-self: center;
+  padding-top: 1rem;
+  align-self: flex-start;
   row-gap: 2rem;
   justify-items: center;
   grid-area: 1/1 / span 1 / span 1;

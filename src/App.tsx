@@ -23,7 +23,7 @@ function Content() {
         {!hideAdmin && <ClockConfiguration />}
         <div className="clock__content grid">
           <AnalogClock />
-          {(!hideAdmin || displayDigitalClock) && <DigitalClock />}
+          {displayDigitalClock && <DigitalClock />}
         </div>
       </div>
       {!hideAdmin && <CopyLinks />}
