@@ -7,7 +7,9 @@ function RushnessSlider() {
 
   return (
     <div className="rushness_slider__container">
-      <div>Rushness</div>
+      <label data-tooltip="Coefficient that determines how much clock should rush. Value of 1 represents the real clock time.">
+        <abbr>Rushness</abbr>
+      </label>
       <input
         id="rushnessSlider"
         type="range"

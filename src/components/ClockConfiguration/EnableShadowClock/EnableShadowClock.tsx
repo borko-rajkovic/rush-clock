@@ -8,7 +8,16 @@ function EnableShadowClock() {
 
   return (
     <div className="clock__configuration__enable_shadow_clock">
-      <label>Enable Shadow Clock</label>
+      <label>
+        Enable{" "}
+        <abbr
+          data-tooltip="When enabled, click on the center of the clock will toggle real clock time in a shadow behind Rush Clock"
+          title=""
+        >
+          Shadow
+        </abbr>{" "}
+        Clock
+      </label>
       <div className="checkbox_item citem_1">
         <label className="checkbox_wrap">
           <input

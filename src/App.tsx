@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import "./App.css";
+import "./Tooltip.css";
 import AnalogClock from "./components/AnalogClock/AnalogClock";
 import DigitalClock from "./components/DigitalClock/DigitalClock";
 import ContextClock from "./context/clock-context/ClockContext";
