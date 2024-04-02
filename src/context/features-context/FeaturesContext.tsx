@@ -39,9 +39,9 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     : 2;
   const initialHideAdmin = hideAdminQueryParam === "true";
   const initialLinkHideAdmin = hideAdminQueryParam !== "false";
-  const initialEnableShadowClock = enableShadowClockQueryParam === "true";
+  const initialEnableShadowClock = enableShadowClockQueryParam !== "false";
   const initialDisplayDigitalClock = displayDigitalClockQueryParam !== "false";
-  const initialClock24Type = digitalClockType === "24";
+  const initialClock24Type = digitalClockType !== "12";
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(initialClock24Type);

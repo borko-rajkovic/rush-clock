@@ -9,11 +9,17 @@ function EnableShadowClock() {
   return (
     <div className="clock__configuration__enable_shadow_clock">
       <label>Enable Shadow Clock</label>
-      <input
-        type="checkbox"
-        checked={enableShadowClock}
-        onChange={() => setEnableShadowClock(!enableShadowClock)}
-      />
+      <div className="checkbox_item citem_1">
+        <label className="checkbox_wrap">
+          <input
+            type="checkbox"
+            className="checkbox_inp"
+            checked={enableShadowClock}
+            onChange={() => setEnableShadowClock(!enableShadowClock)}
+          />
+          <span className="checkbox_mark"></span>
+        </label>
+      </div>
     </div>
   );
 }

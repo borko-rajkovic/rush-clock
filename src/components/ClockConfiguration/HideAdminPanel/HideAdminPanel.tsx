@@ -8,11 +8,17 @@ function HideAdminPanel() {
   return (
     <div className="clock__configuration__hide_admin_panel">
       <label>Hide Admin Panel</label>
-      <input
-        type="checkbox"
-        checked={linkHideAdmin}
-        onChange={() => setLinkHideAdmin(!linkHideAdmin)}
-      />
+      <div className="checkbox_item citem_1">
+        <label className="checkbox_wrap">
+          <input
+            type="checkbox"
+            className="checkbox_inp"
+            checked={linkHideAdmin}
+            onChange={() => setLinkHideAdmin(!linkHideAdmin)}
+          />
+          <span className="checkbox_mark"></span>
+        </label>
+      </div>
     </div>
   );
 }
