@@ -11,8 +11,12 @@ const defaultValues: FeaturesContextType = {
   setRushCoefficient: () => {},
   hideAdmin: false,
   setHideAdmin: () => {},
+  linkHideAdmin: false,
+  setLinkHideAdmin: () => {},
   enableShadowClock: true,
   setEnableShadowClock: () => {},
+  displayDigitalClock: true,
+  setDisplayDigitalClock: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -27,23 +31,30 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const rushnessQueryParam = getParam("rushness");
   const hideAdminQueryParam = getParam("hideAdmin");
   const enableShadowClockQueryParam = getParam("enableShadowClock");
+  const displayDigitalClockQueryParam = getParam("displayDigitalClock");
+  const digitalClockType = getParam("digitalClockType");
 
   const initialRushCoefficient = rushnessQueryParam
     ? Number(rushnessQueryParam)
     : 2;
   const initialHideAdmin = hideAdminQueryParam === "true";
-  const initialEnableShadowClock = enableShadowClockQueryParam
-    ? enableShadowClockQueryParam === "true"
-    : true;
+  const initialLinkHideAdmin = hideAdminQueryParam !== "false";
+  const initialEnableShadowClock = enableShadowClockQueryParam === "true";
+  const initialDisplayDigitalClock = displayDigitalClockQueryParam !== "false";
+  const initialClock24Type = digitalClockType === "24";
 
   const [shadowVisible, setShadowVisible] = useState(false);
-  const [clock24Type, setClock24Type] = useState(true);
+  const [clock24Type, setClock24Type] = useState(initialClock24Type);
   const [rushCoefficient, setRushCoefficient] = useState(
     initialRushCoefficient
   );
   const [hideAdmin, setHideAdmin] = useState(initialHideAdmin);
+  const [linkHideAdmin, setLinkHideAdmin] = useState(initialLinkHideAdmin);
   const [enableShadowClock, setEnableShadowClock] = useState(
     initialEnableShadowClock
+  );
+  const [displayDigitalClock, setDisplayDigitalClock] = useState(
+    initialDisplayDigitalClock
   );
 
   return (
@@ -59,6 +70,10 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setHideAdmin,
         enableShadowClock,
         setEnableShadowClock,
+        linkHideAdmin,
+        setLinkHideAdmin,
+        displayDigitalClock,
+        setDisplayDigitalClock,
       }}
     >
       {children}

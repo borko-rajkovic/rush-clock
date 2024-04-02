@@ -1,0 +1,5 @@
+.clock__configuration__hide_admin_panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

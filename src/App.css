@@ -63,7 +63,7 @@ body {
   font-size: var(--biggest-font-size);
   font-weight: var(--font-medium);
   color: var(--title-color);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/

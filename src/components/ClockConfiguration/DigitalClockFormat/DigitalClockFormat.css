@@ -1,0 +1,5 @@
+.clock__configuration__digital_clock_format {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

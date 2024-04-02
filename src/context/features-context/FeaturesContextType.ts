@@ -9,4 +9,8 @@ export type FeaturesContextType = {
   setHideAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   enableShadowClock: boolean;
   setEnableShadowClock: React.Dispatch<React.SetStateAction<boolean>>;
+  linkHideAdmin: boolean;
+  setLinkHideAdmin: React.Dispatch<React.SetStateAction<boolean>>;
+  displayDigitalClock: boolean;
+  setDisplayDigitalClock: React.Dispatch<React.SetStateAction<boolean>>;
 };

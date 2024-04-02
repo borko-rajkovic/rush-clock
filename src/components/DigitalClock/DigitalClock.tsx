@@ -5,15 +5,11 @@ import { FeaturesContext } from "../../context/features-context/FeaturesContext"
 
 function DigitalClock() {
   const { digital } = useContext(ClockContext);
-  const { clock24Type, setClock24Type } = useContext(FeaturesContext);
-
-  const changeClockType = () => {
-    setClock24Type(!clock24Type);
-  };
+  const { clock24Type } = useContext(FeaturesContext);
 
   return (
     <div>
-      <div className="clock__text" onClick={changeClockType}>
+      <div className="clock__text">
         <div className="clock__text-hour">{`${
           clock24Type ? digital.hour24 : digital.hour12
         }:`}</div>

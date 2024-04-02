@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./RushnessSlider.css";
-import { FeaturesContext } from "../../context/features-context/FeaturesContext";
+import { FeaturesContext } from "../../../context/features-context/FeaturesContext";
 
 function RushnessSlider() {
   const { rushCoefficient, setRushCoefficient } = useContext(FeaturesContext);

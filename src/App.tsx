@@ -11,7 +11,7 @@ import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
 
 function Content() {
-  const { hideAdmin } = useContext(FeaturesContext);
+  const { hideAdmin, displayDigitalClock } = useContext(FeaturesContext);
 
   return (
     <section className="clock container">
@@ -22,7 +22,7 @@ function Content() {
         {!hideAdmin && <ClockConfiguration />}
         <div className="clock__content grid">
           <AnalogClock />
-          <DigitalClock />
+          {(!hideAdmin || displayDigitalClock) && <DigitalClock />}
         </div>
       </div>
       {!hideAdmin && <CopyLinks />}
