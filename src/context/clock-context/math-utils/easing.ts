@@ -10,7 +10,7 @@ export const calculateEasedOutDate = (
   easeFinish: number,
   rushCoefficient: number
 ) => {
-  if (date < easeStart || date > easeFinish) {
+  if (date < easeStart || date > easeFinish || easeStart > easeFinish) {
     return new Date(date);
   }
 

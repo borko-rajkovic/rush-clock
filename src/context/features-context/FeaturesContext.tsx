@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { FeaturesContextType } from "./FeaturesContextType";
+import { FeaturesContextType, RushTimes } from "./FeaturesContextType";
 import { useLocation } from "react-router-dom";
 
 const defaultValues: FeaturesContextType = {
@@ -17,6 +17,14 @@ const defaultValues: FeaturesContextType = {
   setEnableShadowClock: () => {},
   displayDigitalClock: true,
   setDisplayDigitalClock: () => {},
+  rushTimes: {
+    rushType: "hour",
+    customRushTimes: {
+      from: 0,
+      to: 0,
+    },
+  },
+  setRushTimes: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -32,7 +40,10 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const hideAdminQueryParam = getParam("hideAdmin");
   const enableShadowClockQueryParam = getParam("enableShadowClock");
   const displayDigitalClockQueryParam = getParam("displayDigitalClock");
-  const digitalClockType = getParam("digitalClockType");
+  const digitalClockTypeQueryParam = getParam("digitalClockType");
+  const rushTypeQueryParam = getParam("rushType");
+  const customRushTimeFromQueryParam = getParam("customRushTimeFrom");
+  const customRushTimeToQueryParam = getParam("customRushTimeTo");
 
   const initialRushCoefficient = rushnessQueryParam
     ? Number(rushnessQueryParam)
@@ -41,7 +52,13 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const initialLinkHideAdmin = hideAdminQueryParam !== "false";
   const initialEnableShadowClock = enableShadowClockQueryParam !== "false";
   const initialDisplayDigitalClock = displayDigitalClockQueryParam !== "false";
-  const initialClock24Type = digitalClockType !== "12";
+  const initialClock24Type = digitalClockTypeQueryParam !== "12";
+  const initialrushType: "hour" | "day" | "custom" =
+    (rushTypeQueryParam as "hour" | "day" | "custom") ?? "hour";
+  const initialcustomRushTimeFrom: number =
+    Number(customRushTimeFromQueryParam) ?? 0;
+  const initialcustomRushTimeTo: number =
+    Number(customRushTimeToQueryParam) ?? 0;
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(initialClock24Type);
@@ -56,6 +73,13 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [displayDigitalClock, setDisplayDigitalClock] = useState(
     initialDisplayDigitalClock
   );
+  const [rushTimes, setRushTimes] = useState<RushTimes>({
+    rushType: initialrushType,
+    customRushTimes: {
+      from: initialcustomRushTimeFrom,
+      to: initialcustomRushTimeTo,
+    },
+  });
 
   return (
     <FeaturesContext.Provider
@@ -74,6 +98,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setLinkHideAdmin,
         displayDigitalClock,
         setDisplayDigitalClock,
+        rushTimes,
+        setRushTimes,
       }}
     >
       {children}

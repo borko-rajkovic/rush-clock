@@ -2,6 +2,7 @@ import { FeaturesContextType } from "../../context/features-context/FeaturesCont
 
 export const generateCopyLink = (features: FeaturesContextType) => {
   const rushCoefficient = features.rushCoefficient;
+  const rushTimes = features.rushTimes;
   const linkHideAdmin = features.linkHideAdmin;
   const enableShadowClock = features.enableShadowClock;
   const displayDigitalClock = features.displayDigitalClock;
@@ -24,6 +25,15 @@ export const generateCopyLink = (features: FeaturesContextType) => {
     enableShadowClock.toString()
   );
   urlWithParams.searchParams.append("digitalClockType", digitalClockType);
+  urlWithParams.searchParams.append("rushType", rushTimes.rushType);
+  urlWithParams.searchParams.append(
+    "customRushTimeFrom",
+    rushTimes.customRushTimes.from.toString()
+  );
+  urlWithParams.searchParams.append(
+    "customRushTimeTo",
+    rushTimes.customRushTimes.to.toString()
+  );
 
   return urlWithParams.toString();
 };

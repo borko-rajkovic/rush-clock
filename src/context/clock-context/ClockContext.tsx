@@ -3,18 +3,20 @@ import { calculateClock } from "./clock-utils/clock-utils";
 import { ClockContextType } from "./ClockContextType";
 import { sleep } from "./clock-utils/analog/analog-clock-utils";
 import { FeaturesContext } from "../features-context/FeaturesContext";
+import { RushTimes } from "../features-context/FeaturesContextType";
 
 export const ClockContext: React.Context<ClockContextType> = createContext(
-  calculateClock(2)
+  calculateClock(2, { rushType: "hour", customRushTimes: { from: 0, to: 0 } })
 );
 
 let currentTickId = crypto.randomUUID();
 
 const updateClock = (
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
-  rushCoefficient: number
+  rushCoefficient: number,
+  rushTimes: RushTimes
 ) => {
-  const clock = calculateClock(rushCoefficient);
+  const clock = calculateClock(rushCoefficient, rushTimes);
   setClock(clock);
 };
 
@@ -34,7 +36,8 @@ const updateClock = (
 const tickClock = async (
   tickClockId: string,
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
-  rushCoefficient: number
+  rushCoefficient: number,
+  rushTimes: RushTimes
 ) => {
   await sleep(1000 - new Date().getMilliseconds());
 
@@ -42,20 +45,20 @@ const tickClock = async (
     return;
   }
 
-  updateClock(setClock, rushCoefficient);
+  updateClock(setClock, rushCoefficient, rushTimes);
 
-  tickClock(tickClockId, setClock, rushCoefficient);
+  tickClock(tickClockId, setClock, rushCoefficient, rushTimes);
 };
 
 const ContextClock = ({ children }: { children: React.ReactNode }) => {
-  const [clock, setClock] = useState(calculateClock(2));
-  const { rushCoefficient } = useContext(FeaturesContext);
+  const { rushCoefficient, rushTimes } = useContext(FeaturesContext);
+  const [clock, setClock] = useState(calculateClock(2, rushTimes));
 
   useEffect(() => {
     currentTickId = crypto.randomUUID();
-    updateClock(setClock, rushCoefficient);
-    tickClock(currentTickId, setClock, rushCoefficient);
-  }, [rushCoefficient]);
+    updateClock(setClock, rushCoefficient, rushTimes);
+    tickClock(currentTickId, setClock, rushCoefficient, rushTimes);
+  }, [rushCoefficient, rushTimes]);
 
   return (
     <ClockContext.Provider value={clock}>{children}</ClockContext.Provider>
