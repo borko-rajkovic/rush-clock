@@ -15,7 +15,9 @@ function Content() {
   const { hideAdmin, displayDigitalClock } = useContext(FeaturesContext);
 
   return (
-    <section className="clock container">
+    <section
+      className={`clock container ${hideAdmin && "container__fill_height"}`}
+    >
       {!hideAdmin && <div className="title">Rush Clock</div>}
       <div
         className={`clock__container grid ${!hideAdmin && "display-config"}`}

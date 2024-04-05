@@ -63,12 +63,15 @@ body {
   font-size: var(--biggest-font-size);
   font-weight: var(--font-medium);
   color: var(--title-color);
-  margin-bottom: 2.5rem;
+  margin: 2.5rem 0;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
-.container {
+.container__fill_height {
   height: 100vh;
+}
+
+.container {
   max-width: 968px;
   display: flex;
   align-items: center;

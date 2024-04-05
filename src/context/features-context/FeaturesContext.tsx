@@ -56,9 +56,9 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const initialrushType: "hour" | "day" | "custom" =
     (rushTypeQueryParam as "hour" | "day" | "custom") ?? "hour";
   const initialcustomRushTimeFrom: number =
-    Number(customRushTimeFromQueryParam) ?? 0;
+    Number(customRushTimeFromQueryParam) || +new Date();
   const initialcustomRushTimeTo: number =
-    Number(customRushTimeToQueryParam) ?? 0;
+    Number(customRushTimeToQueryParam) || +new Date() + 60 * 60 * 1000;
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(initialClock24Type);

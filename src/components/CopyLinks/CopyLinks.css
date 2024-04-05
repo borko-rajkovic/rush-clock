@@ -58,3 +58,7 @@
 .copy-link-button {
   border-radius: 0px var(--roundness) var(--roundness) 0px;
 }
+
+.copy-link:last-child {
+  margin-bottom: 2rem;
+}
