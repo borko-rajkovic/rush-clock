@@ -11,7 +11,7 @@ Clock that rushes.
 - [x] Show a faded real clock
 - [ ] Preview rush behavior
 - [x] Generate links to Standalone and Embedded Rush Clock
-- [ ] Rush in a selected time range
+- [x] Rush in a selected time range
 
 ## Contributing
 
@@ -23,16 +23,16 @@ Clock that rushes.
 - Make sure your features are fully tested
 - Open a pull request, and enjoy <3
 
+## Thanks
+
+Big thanks go to a repo from which this design for the analog clock was taken over: https://github.com/mamad-1999/Alarm-clock-react
+
 <!--
 
 - rush preview
-- rush to a desired target
-- enable rush from
 - more easing functions (?)
 - icon
 - alarm?
-- rush for 1 hour
-- rush work hours
 
 UI:
 
