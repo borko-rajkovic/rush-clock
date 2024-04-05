@@ -62,6 +62,10 @@
   z-index: var(--z-tooltip);
 }
 
+.clock_rounder__shadow_visible {
+  background-color: gray;
+}
+
 .clock__hour,
 .clock__minutes,
 .clock__seconds {

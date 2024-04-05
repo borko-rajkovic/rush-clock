@@ -25,7 +25,9 @@ function AnalogClock() {
       <div className="clock__nine"></div>
 
       <div
-        className="clock__rounder"
+        className={`clock__rounder ${
+          shadowVisible && "clock_rounder__shadow_visible"
+        }`}
         onClick={() => setShadowVisible(!shadowVisible)}
       ></div>
       {enableShadowClock && shadowVisible && (
