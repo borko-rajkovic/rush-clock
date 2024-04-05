@@ -58,7 +58,11 @@ function CustomRushTypeConfiguration({
       <p>
         Unlike <strong>Hourly Rush Clock</strong> or{" "}
         <strong>Daily Rush Clock</strong>, this type of Rush Clock will rush
-        only in the time range you specify here:
+        only in the{" "}
+        <abbr data-tooltip='Time format: "YYYY-MM-DD HH:mm:ss"' title="">
+          time range
+        </abbr>{" "}
+        you specify here:
       </p>
       <div className="inp_wrapper">
         <label htmlFor="inp" className="inp">
