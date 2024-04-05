@@ -30,6 +30,9 @@ function AnalogClock() {
         }`}
         onClick={() => setShadowVisible(!shadowVisible)}
       ></div>
+
+      <div className="clock__letters"></div>
+
       {enableShadowClock && shadowVisible && (
         <>
           <div

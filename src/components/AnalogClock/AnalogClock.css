@@ -68,7 +68,8 @@
 
 .clock__hour,
 .clock__minutes,
-.clock__seconds {
+.clock__seconds,
+.clock__letters {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -121,4 +122,16 @@
 
 .shadow::before {
   background-color: var(--text-color-light);
+}
+
+.clock__letters {
+  top: 5rem;
+  left: 6rem;
+  font-weight: 600;
+}
+
+.clock__letters::before {
+  content: "RC";
+  position: absolute;
+  z-index: var(--z-normal);
 }
