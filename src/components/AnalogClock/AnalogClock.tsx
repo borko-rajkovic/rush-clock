@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./AnalogClock.css";
 import { ClockContext } from "../../context/clock-context/ClockContext";
 import { FeaturesContext } from "../../context/features-context/FeaturesContext";
+import { FcAlarmClock } from "react-icons/fc";
 
 function AnalogClock() {
   const {
@@ -14,11 +15,21 @@ function AnalogClock() {
     },
   } = useContext(ClockContext);
 
-  const { shadowVisible, setShadowVisible, enableShadowClock } =
-    useContext(FeaturesContext);
+  const {
+    shadowVisible,
+    setShadowVisible,
+    enableShadowClock,
+    alarm,
+    alarmRinging,
+  } = useContext(FeaturesContext);
 
   return (
     <div className="clock__circle">
+      <FcAlarmClock
+        className={`alarm-icon ${alarm && "alarm-active"} ${
+          alarmRinging && "alarm-ringing"
+        }`}
+      />
       <div className="clock__twelve"></div>
       <div className="clock__three"></div>
       <div className="clock__six"></div>

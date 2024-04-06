@@ -5,6 +5,7 @@ import DigitalClockFormat from "./DigitalClockFormat/DigitalClockFormat";
 import DisplayDigitalClock from "./DisplayDigitalClock/DisplayDigitalClock";
 import HideAdminPanel from "./HideAdminPanel/HideAdminPanel";
 import RushTypeConfiguration from "./RushTypeConfiguration/RushTypeConfiguration";
+import AlarmConfiguration from "./AlarmConfiguration/AlarmConfiguration";
 import ColorThemeConfiguration from "./ColorThemeConfiguration/ColorThemeConfiguration";
 
 function ClockConfiguration() {
@@ -17,6 +18,7 @@ function ClockConfiguration() {
       <HideAdminPanel />
       <DisplayDigitalClock />
       <DigitalClockFormat />
+      <AlarmConfiguration />
       <ColorThemeConfiguration />
       <RushTypeConfiguration />
     </div>

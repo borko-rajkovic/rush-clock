@@ -34,6 +34,7 @@ export const generateCopyLink = (features: FeaturesContextType) => {
     "customRushTimeTo",
     rushTimes.customRushTimes.to.toString()
   );
+  urlWithParams.searchParams.append("alarm", features.alarm.toString());
   urlWithParams.searchParams.append("hueColor", features.hueColor.toString());
 
   return urlWithParams.toString();

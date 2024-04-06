@@ -25,6 +25,10 @@ const defaultValues: FeaturesContextType = {
     },
   },
   setRushTimes: () => {},
+  alarm: false,
+  setAlarm: () => {},
+  alarmRinging: false,
+  setAlarmRinging: () => {},
   hueColor: 240,
   setHueColor: () => {},
 };
@@ -46,6 +50,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const rushTypeQueryParam = getParam("rushType");
   const customRushTimeFromQueryParam = getParam("customRushTimeFrom");
   const customRushTimeToQueryParam = getParam("customRushTimeTo");
+  const alarmQueryParam = getParam("alarm");
   const hueColorQueryParam = getParam("hueColor");
 
   const initialRushCoefficient = rushnessQueryParam
@@ -62,6 +67,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     Number(customRushTimeFromQueryParam) || +new Date();
   const initialcustomRushTimeTo: number =
     Number(customRushTimeToQueryParam) || +new Date() + 60 * 60 * 1000;
+  const initialAlarm = alarmQueryParam === "true";
   const initialHueColor = hueColorQueryParam ? Number(hueColorQueryParam) : 240;
 
   const [shadowVisible, setShadowVisible] = useState(false);
@@ -84,6 +90,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
       to: initialcustomRushTimeTo,
     },
   });
+  const [alarm, setAlarm] = useState(initialAlarm);
+  const [alarmRinging, setAlarmRinging] = useState(false);
   const [hueColor, setHueColor] = useState(initialHueColor);
 
   return (
@@ -105,6 +113,10 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setDisplayDigitalClock,
         rushTimes,
         setRushTimes,
+        alarm,
+        setAlarm,
+        alarmRinging,
+        setAlarmRinging,
         hueColor,
         setHueColor,
       }}

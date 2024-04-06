@@ -7,7 +7,10 @@ function RushnessSlider() {
 
   return (
     <div className="rushness_slider__container">
-      <label data-tooltip="Coefficient that determines how much clock should rush. Value of 1 represents the real clock time.">
+      <label
+        className="rushness_slider__label"
+        data-tooltip="Coefficient that determines how much clock should rush. Value of 1 represents the real clock time."
+      >
         <abbr>Rushness</abbr>
       </label>
       <input
@@ -20,7 +23,7 @@ function RushnessSlider() {
         value={rushCoefficient}
         onChange={(e) => setRushCoefficient(Number(e.target.value))}
       ></input>
-      <label htmlFor="rushnessSlider" className="rushness_slider__label">
+      <label htmlFor="rushnessSlider" className="rushness_slider__input_label">
         {rushCoefficient.toFixed(2)}
       </label>
     </div>

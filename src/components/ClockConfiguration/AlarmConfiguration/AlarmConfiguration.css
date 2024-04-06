@@ -1,0 +1,10 @@
+.clock__configuration__alarm_configuration {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+abbr {
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
