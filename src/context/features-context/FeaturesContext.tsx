@@ -25,6 +25,8 @@ const defaultValues: FeaturesContextType = {
     },
   },
   setRushTimes: () => {},
+  hueColor: 240,
+  setHueColor: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -44,6 +46,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const rushTypeQueryParam = getParam("rushType");
   const customRushTimeFromQueryParam = getParam("customRushTimeFrom");
   const customRushTimeToQueryParam = getParam("customRushTimeTo");
+  const hueColorQueryParam = getParam("hueColor");
 
   const initialRushCoefficient = rushnessQueryParam
     ? Number(rushnessQueryParam)
@@ -59,6 +62,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     Number(customRushTimeFromQueryParam) || +new Date();
   const initialcustomRushTimeTo: number =
     Number(customRushTimeToQueryParam) || +new Date() + 60 * 60 * 1000;
+  const initialHueColor = hueColorQueryParam ? Number(hueColorQueryParam) : 240;
 
   const [shadowVisible, setShadowVisible] = useState(false);
   const [clock24Type, setClock24Type] = useState(initialClock24Type);
@@ -80,6 +84,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
       to: initialcustomRushTimeTo,
     },
   });
+  const [hueColor, setHueColor] = useState(initialHueColor);
 
   return (
     <FeaturesContext.Provider
@@ -100,6 +105,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setDisplayDigitalClock,
         rushTimes,
         setRushTimes,
+        hueColor,
+        setHueColor,
       }}
     >
       {children}

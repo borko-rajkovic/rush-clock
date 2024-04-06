@@ -12,6 +12,7 @@ Clock that rushes.
 - [ ] Preview rush behavior
 - [x] Generate links to Standalone and Embedded Rush Clock
 - [x] Rush in a selected time range
+- [x] Color theme
 
 ## Contributing
 

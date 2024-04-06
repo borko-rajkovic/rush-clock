@@ -23,4 +23,6 @@ export type FeaturesContextType = {
   setDisplayDigitalClock: React.Dispatch<React.SetStateAction<boolean>>;
   rushTimes: RushTimes;
   setRushTimes: React.Dispatch<React.SetStateAction<RushTimes>>;
+  hueColor: number;
+  setHueColor: React.Dispatch<React.SetStateAction<number>>;
 };

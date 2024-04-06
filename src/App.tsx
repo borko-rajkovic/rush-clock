@@ -12,12 +12,16 @@ import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
 
 function Content() {
-  const { hideAdmin, displayDigitalClock } = useContext(FeaturesContext);
+  const { hideAdmin, displayDigitalClock, hueColor } =
+    useContext(FeaturesContext);
 
   return (
     <section
       className={`clock container ${hideAdmin && "container__fill_height"}`}
     >
+      <style
+        dangerouslySetInnerHTML={{ __html: `:root {--hue-color: ${hueColor}}` }}
+      ></style>
       {!hideAdmin && <div className="title">Rush Clock</div>}
       <div
         className={`clock__container grid ${!hideAdmin && "display-config"}`}
