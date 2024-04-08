@@ -13,6 +13,7 @@ Clock that rushes.
 - [x] Generate links to Standalone and Embedded Rush Clock
 - [x] Rush in a selected time range
 - [x] Color theme
+- [x] Alarm
 
 ## Contributing
 
@@ -33,7 +34,6 @@ Big thanks go to a repo from which this design for the analog clock was taken ov
 - rush preview
 - more easing functions (?)
 - icon
-- alarm?
 - Splash screen
 
 UI:

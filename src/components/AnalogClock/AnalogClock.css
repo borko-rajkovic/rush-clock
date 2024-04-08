@@ -149,7 +149,7 @@
 }
 
 .alarm-ringing {
-  animation: alarm-ringing 2s 3 alternate;
+  animation: alarm-ringing 2s infinite alternate;
 }
 
 @keyframes alarm-ringing {

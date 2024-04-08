@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { FeaturesContextType, RushTimes } from "./FeaturesContextType";
 import { useLocation } from "react-router-dom";
 import { ColorTheme } from "../../components/ClockConfiguration/ColorThemeConfiguration/ColorTheme";
-import AlarmSound from "../../ringtone-126505.mp3";
+import AlarmSound from "../../audio/ringtone-126505.mp3";
 
 const alarmSound = new Audio(AlarmSound);
 
@@ -37,6 +37,8 @@ const defaultValues: FeaturesContextType = {
   setHueColor: () => {},
   resetConfiguration: () => {},
   alarmSound,
+  startAlarm: () => {},
+  stopAlarm: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -100,6 +102,24 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [alarmRinging, setAlarmRinging] = useState(false);
   const [hueColor, setHueColor] = useState(initialHueColor);
 
+  const startAlarm = () => {
+    if (!alarm) {
+      return;
+    }
+
+    alarmSound.play();
+    alarmSound.onended = function () {
+      setAlarmRinging(false);
+    };
+    setAlarmRinging(true);
+  };
+
+  const stopAlarm = () => {
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+    setAlarmRinging(false);
+  };
+
   const resetConfiguration = () => {
     setShadowVisible(defaultValues.shadowVisible);
     setClock24Type(defaultValues.clock24Type);
@@ -141,6 +161,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setHueColor,
         resetConfiguration,
         alarmSound,
+        startAlarm,
+        stopAlarm,
       }}
     >
       {children}

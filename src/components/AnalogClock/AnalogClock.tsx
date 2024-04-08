@@ -21,11 +21,13 @@ function AnalogClock() {
     enableShadowClock,
     alarm,
     alarmRinging,
+    stopAlarm,
   } = useContext(FeaturesContext);
 
   return (
     <div className="clock__circle">
       <FcAlarmClock
+        onClick={() => stopAlarm()}
         className={`alarm-icon ${alarm && "alarm-active"} ${
           alarmRinging && "alarm-ringing"
         }`}
