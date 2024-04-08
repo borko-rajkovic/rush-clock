@@ -7,6 +7,7 @@ import HideAdminPanel from "./HideAdminPanel/HideAdminPanel";
 import RushTypeConfiguration from "./RushTypeConfiguration/RushTypeConfiguration";
 import AlarmConfiguration from "./AlarmConfiguration/AlarmConfiguration";
 import ColorThemeConfiguration from "./ColorThemeConfiguration/ColorThemeConfiguration";
+import ResetConfiguration from "./ResetConfiguration/ResetConfiguration";
 
 function ClockConfiguration() {
   return (
@@ -21,6 +22,7 @@ function ClockConfiguration() {
       <DigitalClockFormat />
       <AlarmConfiguration />
       <ColorThemeConfiguration />
+      <ResetConfiguration />
     </div>
   );
 }

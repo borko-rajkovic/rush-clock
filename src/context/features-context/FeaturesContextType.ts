@@ -29,4 +29,5 @@ export type FeaturesContextType = {
   setAlarmRinging: React.Dispatch<React.SetStateAction<boolean>>;
   hueColor: number;
   setHueColor: React.Dispatch<React.SetStateAction<number>>;
+  resetConfiguration: React.Dispatch<React.SetStateAction<void>>;
 };

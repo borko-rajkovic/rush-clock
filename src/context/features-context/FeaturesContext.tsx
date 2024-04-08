@@ -11,7 +11,7 @@ const defaultValues: FeaturesContextType = {
   setRushCoefficient: () => {},
   hideAdmin: false,
   setHideAdmin: () => {},
-  linkHideAdmin: false,
+  linkHideAdmin: true,
   setLinkHideAdmin: () => {},
   enableShadowClock: true,
   setEnableShadowClock: () => {},
@@ -31,6 +31,7 @@ const defaultValues: FeaturesContextType = {
   setAlarmRinging: () => {},
   hueColor: 240,
   setHueColor: () => {},
+  resetConfiguration: () => {},
 };
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
@@ -94,6 +95,20 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [alarmRinging, setAlarmRinging] = useState(false);
   const [hueColor, setHueColor] = useState(initialHueColor);
 
+  const resetConfiguration = () => {
+    setShadowVisible(defaultValues.shadowVisible);
+    setClock24Type(defaultValues.clock24Type);
+    setRushCoefficient(defaultValues.rushCoefficient);
+    setHideAdmin(defaultValues.hideAdmin);
+    setLinkHideAdmin(defaultValues.linkHideAdmin);
+    setEnableShadowClock(defaultValues.enableShadowClock);
+    setDisplayDigitalClock(defaultValues.displayDigitalClock);
+    setRushTimes(defaultValues.rushTimes);
+    setAlarm(defaultValues.alarm);
+    setAlarmRinging(defaultValues.alarmRinging);
+    setHueColor(defaultValues.hueColor);
+  };
+
   return (
     <FeaturesContext.Provider
       value={{
@@ -119,6 +134,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         setAlarmRinging,
         hueColor,
         setHueColor,
+        resetConfiguration,
       }}
     >
       {children}
