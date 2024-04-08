@@ -10,6 +10,7 @@ import ContextFeatures, {
 import { BrowserRouter } from "react-router-dom";
 import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
+import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
 
 function Content() {
   const { hideAdmin, displayDigitalClock, hueColor } =
@@ -19,6 +20,7 @@ function Content() {
     <section
       className={`clock container ${hideAdmin && "container__fill_height"}`}
     >
+      {!hideAdmin && <ForkMeOnGithub />}
       <style
         dangerouslySetInnerHTML={{ __html: `:root {--hue-color: ${hueColor}}` }}
       ></style>
