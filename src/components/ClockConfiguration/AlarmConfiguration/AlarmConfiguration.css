@@ -8,3 +8,43 @@ abbr {
   font-size: 1.2rem;
   text-decoration: underline;
 }
+
+.play-alarm-sound-button {
+  --height: 36px;
+  --roundness: 4px;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dddddd;
+  color: #333333;
+  outline: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.play-alarm-sound-button:hover {
+  background-color: #cccccc;
+}
+
+.play-alarm-sound-button:active {
+  background-color: #bbbbbb;
+}
+
+.play-alarm-sound-button {
+  border-radius: var(--roundness);
+}
+
+.play-alarm-sound-button-inactive {
+  display: none;
+}
+
+.play-alarm-sound-button-wrapper {
+  display: inline;
+}
+
+.enable-alarm-sound-title-button-wrapper {
+  display: flex;
+  column-gap: 0.5rem;
+}

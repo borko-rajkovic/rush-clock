@@ -1,22 +1,42 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./AlarmConfiguration.css";
 import { FeaturesContext } from "../../../context/features-context/FeaturesContext";
+import { CiPlay1 } from "react-icons/ci";
+import { CiStop1 } from "react-icons/ci";
 
 function AlarmConfiguration() {
-  const { alarm, setAlarm } = useContext(FeaturesContext);
+  const { alarm, setAlarm, alarmSound } = useContext(FeaturesContext);
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    if (play) {
+      alarmSound.play();
+    } else {
+      alarmSound.pause();
+      alarmSound.currentTime = 0;
+    }
+  }, [alarmSound, play]);
 
   return (
     <div className="clock__configuration__alarm_configuration">
-      <label>
-        Enable{" "}
-        <abbr
-          data-tooltip="When enabled, at the end of the Rush period you will be notified by the bell sound"
-          title=""
+      <div className="enable-alarm-sound-title-button-wrapper">
+        <label>
+          Enable{" "}
+          <abbr
+            data-tooltip="When enabled, at the end of the Rush period you will be notified by the bell sound"
+            title=""
+          >
+            alarm
+          </abbr>{" "}
+          sound
+        </label>
+        <label
+          className="play-alarm-sound-button"
+          onClick={() => setPlay(!play)}
         >
-          alarm
-        </abbr>{" "}
-        sound
-      </label>
+          {!play ? <CiPlay1 /> : <CiStop1 />}
+        </label>
+      </div>
       <div className="checkbox_item citem_1">
         <label className="checkbox_wrap">
           <input

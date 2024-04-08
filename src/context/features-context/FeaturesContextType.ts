@@ -30,4 +30,5 @@ export type FeaturesContextType = {
   hueColor: number;
   setHueColor: React.Dispatch<React.SetStateAction<number>>;
   resetConfiguration: React.Dispatch<React.SetStateAction<void>>;
+  alarmSound: HTMLAudioElement;
 };

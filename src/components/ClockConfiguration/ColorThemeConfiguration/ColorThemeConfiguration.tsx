@@ -1,12 +1,7 @@
 import { useContext } from "react";
 import "./ColorThemeConfiguration.css";
 import { FeaturesContext } from "../../../context/features-context/FeaturesContext";
-
-enum ColorTheme {
-  Cherry = 0,
-  Lime = 130,
-  Blueberry = 240,
-}
+import { ColorTheme } from "./ColorTheme";
 
 function ColorThemeConfiguration() {
   const { hueColor, setHueColor } = useContext(FeaturesContext);
