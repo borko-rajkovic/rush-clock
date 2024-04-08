@@ -1,7 +1,7 @@
 .clock__configuration {
   display: grid;
-  grid-template: 4rem 4rem repeat(7, 3rem) 4rem 24rem / 1fr;
-  border: 2px dashed hsl(240, 94%, 90%, 100%);
+  grid-template: 4rem 4rem 3rem 4rem 24rem repeat(6, 3rem) 6rem/ 1fr;
+  border: 2px dashed hsl(var(--hue-color), 74%, 70%, 100%);
   border-radius: 4px;
   padding: 1.5rem;
 }

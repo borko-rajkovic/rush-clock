@@ -14,13 +14,13 @@ function ClockConfiguration() {
       <div className="clock__configuration__title">Configuration</div>
       <div></div>
       <RushnessSlider />
+      <RushTypeConfiguration />
       <EnableShadowClock />
       <HideAdminPanel />
       <DisplayDigitalClock />
       <DigitalClockFormat />
       <AlarmConfiguration />
       <ColorThemeConfiguration />
-      <RushTypeConfiguration />
     </div>
   );
 }
