@@ -23,7 +23,10 @@ function CustomRushTypeConfiguration({
   const momentDateFrom = moment(customDateFrom, "YYYY-MM-DD HH:mm:ss");
   const momentDateTo = moment(customDateTo, "YYYY-MM-DD HH:mm:ss");
 
-  const isCustomDateValid = (input: string) => {
+  const isCustomDateValid = (
+    input: string,
+    { dateFrom = momentDateFrom, dateTo = momentDateTo }
+  ) => {
     if (!input.match(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/)) {
       return false;
     }
@@ -34,7 +37,7 @@ function CustomRushTypeConfiguration({
       return false;
     }
 
-    return +momentDateTo.toDate() - +momentDateFrom.toDate() >= 0;
+    return +dateTo.toDate() - +dateFrom.toDate() >= 0;
   };
 
   const setCustomDates = (from: number, to: number) => {
@@ -68,14 +71,20 @@ function CustomRushTypeConfiguration({
         <label htmlFor="inp" className="inp">
           <input
             type="text"
-            className={isCustomDateValid(customDateFrom) ? "" : "inp_error"}
+            className={isCustomDateValid(customDateFrom, {}) ? "" : "inp_error"}
             id="inp"
             placeholder="&nbsp;"
             value={customDateFrom}
             onChange={(e) => {
               const newCustomDateFrom = e.target.value;
+              const newDateFrom = moment(
+                newCustomDateFrom,
+                "YYYY-MM-DD HH:mm:ss"
+              );
               setCustomDateFrom(newCustomDateFrom);
-              if (isCustomDateValid(newCustomDateFrom)) {
+              if (
+                isCustomDateValid(newCustomDateFrom, { dateFrom: newDateFrom })
+              ) {
                 setCustomDates(
                   +moment(newCustomDateFrom, "YYYY-MM-DD HH:mm:ss").toDate(),
                   +momentDateTo.toDate()
@@ -91,14 +100,15 @@ function CustomRushTypeConfiguration({
         <label htmlFor="inp" className="inp">
           <input
             type="text"
-            className={isCustomDateValid(customDateTo) ? "" : "inp_error"}
+            className={isCustomDateValid(customDateTo, {}) ? "" : "inp_error"}
             id="inp"
             placeholder="&nbsp;"
             value={customDateTo}
             onChange={(e) => {
               const newCustomDateTo = e.target.value;
+              const newDateTo = moment(newCustomDateTo, "YYYY-MM-DD HH:mm:ss");
               setCustomDateTo(newCustomDateTo);
-              if (isCustomDateValid(newCustomDateTo)) {
+              if (isCustomDateValid(newCustomDateTo, { dateTo: newDateTo })) {
                 setCustomDates(
                   +momentDateFrom.toDate(),
                   +moment(newCustomDateTo, "YYYY-MM-DD HH:mm:ss").toDate()

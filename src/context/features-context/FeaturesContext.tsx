@@ -128,7 +128,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     setLinkHideAdmin(defaultValues.linkHideAdmin);
     setEnableShadowClock(defaultValues.enableShadowClock);
     setDisplayDigitalClock(defaultValues.displayDigitalClock);
-    setRushTimes(defaultValues.rushTimes);
+    setRushTimes(rushTimes);
     setAlarm(defaultValues.alarm);
     setAlarmRinging(defaultValues.alarmRinging);
     setHueColor(defaultValues.hueColor);
