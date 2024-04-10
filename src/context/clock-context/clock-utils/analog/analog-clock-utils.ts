@@ -5,9 +5,10 @@ export const sleep = (ms: number) =>
 
 const rotateZ = (degrees: number) => `rotateZ(${degrees}deg)`;
 
-export const calculateAnalogClock = (easedDate: Date): AnalogClock => {
-  const date = new Date();
-
+export const calculateAnalogClock = (
+  easedDate: Date,
+  date: Date
+): AnalogClock => {
   const seconds = date.getSeconds(); // + date.getMilliseconds() / 1000;
   const minutes = date.getMinutes();
   const hour = date.getHours();

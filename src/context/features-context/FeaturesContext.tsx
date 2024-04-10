@@ -3,6 +3,7 @@ import { FeaturesContextType, RushTimes } from "./FeaturesContextType";
 import { useLocation } from "react-router-dom";
 import { ColorTheme } from "../../components/ClockConfiguration/ColorThemeConfiguration/ColorTheme";
 import AlarmSound from "../../audio/ringtone-126505.mp3";
+import { initialDate } from "../initial-date";
 
 const alarmSound = new Audio(AlarmSound);
 
@@ -72,9 +73,9 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const initialrushType: "hour" | "day" | "custom" =
     (rushTypeQueryParam as "hour" | "day" | "custom") ?? "hour";
   const initialcustomRushTimeFrom: number =
-    Number(customRushTimeFromQueryParam) || +new Date();
+    Number(customRushTimeFromQueryParam) || +initialDate;
   const initialcustomRushTimeTo: number =
-    Number(customRushTimeToQueryParam) || +new Date() + 60 * 60 * 1000;
+    Number(customRushTimeToQueryParam) || +initialDate + 60 * 60 * 1000;
   const initialAlarm = alarmQueryParam === "true";
   const initialHueColor = hueColorQueryParam ? Number(hueColorQueryParam) : 240;
 

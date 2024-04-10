@@ -13,7 +13,7 @@ const calculateHourRushStartAndFinish = (date: Date) => {
 
 const calculateDayRushStartAndFinish = () => {
   const rushStart = new Date().setHours(0, 0, 0, 0);
-  const rushFinish = new Date().setHours(23, 59, 59, 999);
+  const rushFinish = rushStart + 24 * 60 * 60 * 1000;
 
   return { rushStart, rushFinish };
 };
@@ -40,10 +40,9 @@ const calculateRushStartAndRushFinish = (date: Date, rushTimes: RushTimes) => {
 
 export const calculateClock = (
   rushCoefficient: number,
-  rushTimes: RushTimes
+  rushTimes: RushTimes,
+  date: Date
 ): ClockContextType => {
-  const date = new Date();
-
   const { rushStart, rushFinish } = calculateRushStartAndRushFinish(
     date,
     rushTimes
@@ -57,7 +56,7 @@ export const calculateClock = (
   );
 
   const digital = calculateDigitalClock(date);
-  const analog = calculateAnalogClock(easedOutDate);
+  const analog = calculateAnalogClock(easedOutDate, date);
 
   return { digital, analog };
 };

@@ -11,9 +11,14 @@ import { sleep } from "./clock-utils/analog/analog-clock-utils";
 import { FeaturesContext } from "../features-context/FeaturesContext";
 import { RushTimes } from "../features-context/FeaturesContextType";
 import { playAlarm } from "./clock-utils/alarm/alarm-utils";
+import { initialDate } from "../initial-date";
 
 export const ClockContext: React.Context<ClockContextType> = createContext(
-  calculateClock(2, { rushType: "hour", customRushTimes: { from: 0, to: 0 } })
+  calculateClock(
+    2,
+    { rushType: "hour", customRushTimes: { from: 0, to: 0 } },
+    initialDate
+  )
 );
 
 let currentTickId = crypto.randomUUID();
@@ -22,10 +27,11 @@ const updateClock = (
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
   rushCoefficient: number,
   rushTimes: RushTimes,
-  startAlarm: React.Dispatch<SetStateAction<void>>
+  startAlarm: React.Dispatch<SetStateAction<void>>,
+  date: Date
 ) => {
-  const clock = calculateClock(rushCoefficient, rushTimes);
-  playAlarm(startAlarm, rushTimes);
+  const clock = calculateClock(rushCoefficient, rushTimes, date);
+  playAlarm(startAlarm, rushTimes, date);
   setClock(clock);
 };
 
@@ -65,7 +71,7 @@ const tickClock = async (
     return;
   }
 
-  updateClock(setClock, rushCoefficient, rushTimes, startAlarm);
+  updateClock(setClock, rushCoefficient, rushTimes, startAlarm, new Date());
 
   tickClock(tickClockId, setClock, rushCoefficient, rushTimes, startAlarm);
 };
@@ -73,11 +79,11 @@ const tickClock = async (
 const ContextClock = ({ children }: { children: React.ReactNode }) => {
   const { rushCoefficient, rushTimes, startAlarm } =
     useContext(FeaturesContext);
-  const [clock, setClock] = useState(calculateClock(2, rushTimes));
+  const [clock, setClock] = useState(calculateClock(2, rushTimes, initialDate));
 
   useEffect(() => {
     currentTickId = crypto.randomUUID();
-    updateClock(setClock, rushCoefficient, rushTimes, startAlarm);
+    updateClock(setClock, rushCoefficient, rushTimes, startAlarm, new Date());
     tickClock(currentTickId, setClock, rushCoefficient, rushTimes, startAlarm);
   }, [rushCoefficient, rushTimes, startAlarm]);
 
