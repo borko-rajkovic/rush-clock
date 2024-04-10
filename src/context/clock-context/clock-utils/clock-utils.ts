@@ -1,4 +1,4 @@
-import { RushTimes } from "../../features-context/FeaturesContextType";
+import { RushTimesConfiguration } from "../../features-context/RushTimesConfiguration";
 import { ClockContextType } from "../ClockContextType";
 import { calculateEasedOutDate } from "../math-utils/easing";
 import { calculateAnalogClock } from "./analog/analog-clock-utils";
@@ -18,14 +18,19 @@ const calculateDayRushStartAndFinish = () => {
   return { rushStart, rushFinish };
 };
 
-const calculateCustomRushStartAndFinish = (rushTimes: RushTimes) => {
+const calculateCustomRushStartAndFinish = (
+  rushTimes: RushTimesConfiguration
+) => {
   const rushStart = rushTimes.customRushTimes.from;
   const rushFinish = rushTimes.customRushTimes.to;
 
   return { rushStart, rushFinish };
 };
 
-const calculateRushStartAndRushFinish = (date: Date, rushTimes: RushTimes) => {
+const calculateRushStartAndRushFinish = (
+  date: Date,
+  rushTimes: RushTimesConfiguration
+) => {
   switch (rushTimes.rushType) {
     case "hour":
       return calculateHourRushStartAndFinish(date);
@@ -40,7 +45,7 @@ const calculateRushStartAndRushFinish = (date: Date, rushTimes: RushTimes) => {
 
 export const calculateClock = (
   rushCoefficient: number,
-  rushTimes: RushTimes,
+  rushTimes: RushTimesConfiguration,
   date: Date
 ): ClockContextType => {
   const { rushStart, rushFinish } = calculateRushStartAndRushFinish(

@@ -1,49 +1,17 @@
 import { createContext, useState } from "react";
-import { FeaturesContextType, RushTimes } from "./FeaturesContextType";
+import { FeaturesContextType } from "./FeaturesContextType";
+import { RushTimesConfiguration } from "./RushTimesConfiguration";
 import { useLocation } from "react-router-dom";
-import { ColorTheme } from "../../components/ClockConfiguration/ColorThemeConfiguration/ColorTheme";
-import AlarmSound from "../../audio/ringtone-126505.mp3";
-import { initialDate } from "../initial-date";
-
-const alarmSound = new Audio(AlarmSound);
-
-const defaultValues: FeaturesContextType = {
-  shadowVisible: false,
-  setShadowVisible: () => {},
-  clock24Type: true,
-  setClock24Type: () => {},
-  rushCoefficient: 2,
-  setRushCoefficient: () => {},
-  hideAdmin: false,
-  setHideAdmin: () => {},
-  linkHideAdmin: true,
-  setLinkHideAdmin: () => {},
-  enableShadowClock: true,
-  setEnableShadowClock: () => {},
-  displayDigitalClock: true,
-  setDisplayDigitalClock: () => {},
-  rushTimes: {
-    rushType: "hour",
-    customRushTimes: {
-      from: 0,
-      to: 0,
-    },
-  },
-  setRushTimes: () => {},
-  alarm: false,
-  setAlarm: () => {},
-  alarmRinging: false,
-  setAlarmRinging: () => {},
-  hueColor: ColorTheme.Blueberry,
-  setHueColor: () => {},
-  resetConfiguration: () => {},
-  alarmSound,
-  startAlarm: () => {},
-  stopAlarm: () => {},
-};
+import {
+  calculateInitialDayRushStartAndFinish,
+  calculateInitialHourRushStartAndFinish,
+  initialDate,
+} from "../initial-date";
+import { FEATURE_CONTEXT_DEFAULT_VALUES } from "./default-values";
+import { ALARM_SOUND } from "./alarm-sound";
 
 export const FeaturesContext: React.Context<FeaturesContextType> =
-  createContext(defaultValues);
+  createContext(FEATURE_CONTEXT_DEFAULT_VALUES);
 
 const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -92,8 +60,10 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [displayDigitalClock, setDisplayDigitalClock] = useState(
     initialDisplayDigitalClock
   );
-  const [rushTimes, setRushTimes] = useState<RushTimes>({
+  const [rushTimes, setRushTimes] = useState<RushTimesConfiguration>({
     rushType: initialrushType,
+    hourRushTimes: calculateInitialHourRushStartAndFinish(),
+    dayRushTimes: calculateInitialDayRushStartAndFinish(),
     customRushTimes: {
       from: initialcustomRushTimeFrom,
       to: initialcustomRushTimeTo,
@@ -108,31 +78,31 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
       return;
     }
 
-    alarmSound.play();
-    alarmSound.onended = function () {
+    ALARM_SOUND.play();
+    ALARM_SOUND.onended = function () {
       setAlarmRinging(false);
     };
     setAlarmRinging(true);
   };
 
   const stopAlarm = () => {
-    alarmSound.pause();
-    alarmSound.currentTime = 0;
+    ALARM_SOUND.pause();
+    ALARM_SOUND.currentTime = 0;
     setAlarmRinging(false);
   };
 
   const resetConfiguration = () => {
-    setShadowVisible(defaultValues.shadowVisible);
-    setClock24Type(defaultValues.clock24Type);
-    setRushCoefficient(defaultValues.rushCoefficient);
-    setHideAdmin(defaultValues.hideAdmin);
-    setLinkHideAdmin(defaultValues.linkHideAdmin);
-    setEnableShadowClock(defaultValues.enableShadowClock);
-    setDisplayDigitalClock(defaultValues.displayDigitalClock);
+    setShadowVisible(FEATURE_CONTEXT_DEFAULT_VALUES.shadowVisible);
+    setClock24Type(FEATURE_CONTEXT_DEFAULT_VALUES.clock24Type);
+    setRushCoefficient(FEATURE_CONTEXT_DEFAULT_VALUES.rushCoefficient);
+    setHideAdmin(FEATURE_CONTEXT_DEFAULT_VALUES.hideAdmin);
+    setLinkHideAdmin(FEATURE_CONTEXT_DEFAULT_VALUES.linkHideAdmin);
+    setEnableShadowClock(FEATURE_CONTEXT_DEFAULT_VALUES.enableShadowClock);
+    setDisplayDigitalClock(FEATURE_CONTEXT_DEFAULT_VALUES.displayDigitalClock);
     setRushTimes(rushTimes);
-    setAlarm(defaultValues.alarm);
-    setAlarmRinging(defaultValues.alarmRinging);
-    setHueColor(defaultValues.hueColor);
+    setAlarm(FEATURE_CONTEXT_DEFAULT_VALUES.alarm);
+    setAlarmRinging(FEATURE_CONTEXT_DEFAULT_VALUES.alarmRinging);
+    setHueColor(FEATURE_CONTEXT_DEFAULT_VALUES.hueColor);
   };
 
   return (
@@ -161,7 +131,7 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         hueColor,
         setHueColor,
         resetConfiguration,
-        alarmSound,
+        alarmSound: ALARM_SOUND,
         startAlarm,
         stopAlarm,
       }}

@@ -1,8 +1,8 @@
 import { SetStateAction } from "react";
-import { RushTimes } from "../../../features-context/FeaturesContextType";
+import { RushTimesConfiguration } from "../../../features-context/RushTimesConfiguration";
 import { floorToSecond } from "../../math-utils/rounding";
 
-const isAlarmTriggered = (rushTimes: RushTimes, date: Date) => {
+const isAlarmTriggered = (rushTimes: RushTimesConfiguration, date: Date) => {
   switch (rushTimes.rushType) {
     case "hour":
       return date.getSeconds() === 0 && date.getMinutes() === 0;
@@ -22,7 +22,7 @@ const isAlarmTriggered = (rushTimes: RushTimes, date: Date) => {
 
 export const playAlarm = (
   startAlarm: React.Dispatch<SetStateAction<void>>,
-  rushTimes: RushTimes,
+  rushTimes: RushTimesConfiguration,
   date: Date
 ) => {
   const alarmTriggered = isAlarmTriggered(rushTimes, date);

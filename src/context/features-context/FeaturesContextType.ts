@@ -1,10 +1,4 @@
-export type RushTimes = {
-  rushType: "hour" | "day" | "custom";
-  customRushTimes: {
-    from: number;
-    to: number;
-  };
-};
+import { RushTimesConfiguration } from "./RushTimesConfiguration";
 
 export type FeaturesContextType = {
   shadowVisible: boolean;
@@ -21,8 +15,8 @@ export type FeaturesContextType = {
   setLinkHideAdmin: React.Dispatch<React.SetStateAction<boolean>>;
   displayDigitalClock: boolean;
   setDisplayDigitalClock: React.Dispatch<React.SetStateAction<boolean>>;
-  rushTimes: RushTimes;
-  setRushTimes: React.Dispatch<React.SetStateAction<RushTimes>>;
+  rushTimes: RushTimesConfiguration;
+  setRushTimes: React.Dispatch<React.SetStateAction<RushTimesConfiguration>>;
   alarm: boolean;
   setAlarm: React.Dispatch<React.SetStateAction<boolean>>;
   alarmRinging: boolean;

@@ -9,16 +9,13 @@ import { calculateClock } from "./clock-utils/clock-utils";
 import { ClockContextType } from "./ClockContextType";
 import { sleep } from "./clock-utils/analog/analog-clock-utils";
 import { FeaturesContext } from "../features-context/FeaturesContext";
-import { RushTimes } from "../features-context/FeaturesContextType";
+import { RushTimesConfiguration } from "../features-context/RushTimesConfiguration";
 import { playAlarm } from "./clock-utils/alarm/alarm-utils";
 import { initialDate } from "../initial-date";
+import { FEATURE_CONTEXT_DEFAULT_VALUES } from "../features-context/default-values";
 
 export const ClockContext: React.Context<ClockContextType> = createContext(
-  calculateClock(
-    2,
-    { rushType: "hour", customRushTimes: { from: 0, to: 0 } },
-    initialDate
-  )
+  calculateClock(2, FEATURE_CONTEXT_DEFAULT_VALUES.rushTimes, initialDate)
 );
 
 let currentTickId = crypto.randomUUID();
@@ -26,7 +23,7 @@ let currentTickId = crypto.randomUUID();
 const updateClock = (
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
   rushCoefficient: number,
-  rushTimes: RushTimes,
+  rushTimes: RushTimesConfiguration,
   startAlarm: React.Dispatch<SetStateAction<void>>,
   date: Date
 ) => {
@@ -52,7 +49,7 @@ const tickClock = async (
   tickClockId: string,
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
   rushCoefficient: number,
-  rushTimes: RushTimes,
+  rushTimes: RushTimesConfiguration,
   startAlarm: React.Dispatch<React.SetStateAction<void>>
 ) => {
   await sleep(1000 - new Date().getMilliseconds());

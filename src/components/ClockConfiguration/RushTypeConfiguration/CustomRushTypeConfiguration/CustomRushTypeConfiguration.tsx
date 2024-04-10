@@ -1,14 +1,14 @@
 import moment from "moment";
 import "./CustomRushTypeConfiguration.css";
-import { RushTimes } from "../../../../context/features-context/FeaturesContextType";
+import { RushTimesConfiguration } from "../../../../context/features-context/RushTimesConfiguration";
 import { useState } from "react";
 
 function CustomRushTypeConfiguration({
   rushTimes,
   setRushTimes,
 }: {
-  rushTimes: RushTimes;
-  setRushTimes: React.Dispatch<React.SetStateAction<RushTimes>>;
+  rushTimes: RushTimesConfiguration;
+  setRushTimes: React.Dispatch<React.SetStateAction<RushTimesConfiguration>>;
 }) {
   const initialDateFrom = moment(rushTimes.customRushTimes.from).format(
     "YYYY-MM-DD HH:mm:ss"
