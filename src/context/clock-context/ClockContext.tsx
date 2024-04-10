@@ -13,6 +13,7 @@ import { RushTimesConfiguration } from "../features-context/RushTimesConfigurati
 import { playAlarm } from "./clock-utils/alarm/alarm-utils";
 import { initialDate } from "../initial-date";
 import { FEATURE_CONTEXT_DEFAULT_VALUES } from "../features-context/default-values";
+import { updateRushTimes } from "./clock-utils/rush-times/rush-times-utils";
 
 export const ClockContext: React.Context<ClockContextType> = createContext(
   calculateClock(2, FEATURE_CONTEXT_DEFAULT_VALUES.rushTimes, initialDate)
@@ -25,9 +26,11 @@ const updateClock = (
   rushCoefficient: number,
   rushTimes: RushTimesConfiguration,
   startAlarm: React.Dispatch<SetStateAction<void>>,
-  date: Date
+  date: Date,
+  setRushTimes: React.Dispatch<SetStateAction<RushTimesConfiguration>>
 ) => {
   const clock = calculateClock(rushCoefficient, rushTimes, date);
+  updateRushTimes(date, setRushTimes);
   playAlarm(startAlarm, rushTimes, date);
   setClock(clock);
 };
@@ -50,7 +53,8 @@ const tickClock = async (
   setClock: React.Dispatch<React.SetStateAction<ClockContextType>>,
   rushCoefficient: number,
   rushTimes: RushTimesConfiguration,
-  startAlarm: React.Dispatch<React.SetStateAction<void>>
+  startAlarm: React.Dispatch<React.SetStateAction<void>>,
+  setRushTimes: React.Dispatch<React.SetStateAction<RushTimesConfiguration>>
 ) => {
   await sleep(1000 - new Date().getMilliseconds());
 
@@ -68,21 +72,49 @@ const tickClock = async (
     return;
   }
 
-  updateClock(setClock, rushCoefficient, rushTimes, startAlarm, new Date());
+  updateClock(
+    setClock,
+    rushCoefficient,
+    rushTimes,
+    startAlarm,
+    new Date(),
+    setRushTimes
+  );
 
-  tickClock(tickClockId, setClock, rushCoefficient, rushTimes, startAlarm);
+  tickClock(
+    tickClockId,
+    setClock,
+    rushCoefficient,
+    rushTimes,
+    startAlarm,
+    setRushTimes
+  );
 };
 
 const ContextClock = ({ children }: { children: React.ReactNode }) => {
-  const { rushCoefficient, rushTimes, startAlarm } =
+  const { rushCoefficient, rushTimes, startAlarm, setRushTimes } =
     useContext(FeaturesContext);
   const [clock, setClock] = useState(calculateClock(2, rushTimes, initialDate));
 
   useEffect(() => {
     currentTickId = crypto.randomUUID();
-    updateClock(setClock, rushCoefficient, rushTimes, startAlarm, new Date());
-    tickClock(currentTickId, setClock, rushCoefficient, rushTimes, startAlarm);
-  }, [rushCoefficient, rushTimes, startAlarm]);
+    updateClock(
+      setClock,
+      rushCoefficient,
+      rushTimes,
+      startAlarm,
+      new Date(),
+      setRushTimes
+    );
+    tickClock(
+      currentTickId,
+      setClock,
+      rushCoefficient,
+      rushTimes,
+      startAlarm,
+      setRushTimes
+    );
+  }, [rushCoefficient, rushTimes, startAlarm, setRushTimes]);
 
   return (
     <ClockContext.Provider value={clock}>{children}</ClockContext.Provider>

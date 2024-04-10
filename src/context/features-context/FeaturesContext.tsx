@@ -3,8 +3,8 @@ import { FeaturesContextType } from "./FeaturesContextType";
 import { RushTimesConfiguration } from "./RushTimesConfiguration";
 import { useLocation } from "react-router-dom";
 import {
-  calculateInitialDayRushStartAndFinish,
-  calculateInitialHourRushStartAndFinish,
+  calculateDayRushTimes,
+  calculateHourRushTimes,
   initialDate,
 } from "../initial-date";
 import { FEATURE_CONTEXT_DEFAULT_VALUES } from "./default-values";
@@ -62,8 +62,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   );
   const [rushTimes, setRushTimes] = useState<RushTimesConfiguration>({
     rushType: initialrushType,
-    hourRushTimes: calculateInitialHourRushStartAndFinish(),
-    dayRushTimes: calculateInitialDayRushStartAndFinish(),
+    hourRushTimes: calculateHourRushTimes(),
+    dayRushTimes: calculateDayRushTimes(),
     customRushTimes: {
       from: initialcustomRushTimeFrom,
       to: initialcustomRushTimeTo,
