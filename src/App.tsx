@@ -12,7 +12,7 @@ import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
 import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
 import HowItWorks from "./components/HowItWorks/HowItWorks";
-import ClockSimulation from "./components/ClockSimulation/ClockSimulation";
+import ClockSimulation from "./components/RushClockSimulation/RushClockSimulation";
 
 function Content() {
   const { hideAdmin, displayDigitalClock, hueColor } =

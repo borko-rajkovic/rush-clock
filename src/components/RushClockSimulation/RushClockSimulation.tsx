@@ -1,4 +1,4 @@
-import "./ClockSimulation.css";
+import "./RushClockSimulation.css";
 
 function ClockSimulation() {
   return (
