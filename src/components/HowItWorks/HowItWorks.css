@@ -1,0 +1,70 @@
+.how-it-works__button_fixed {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+
+.how-it-works__button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 3rem 0.75rem 1.25rem;
+  border-radius: 99rem;
+  color: #fff;
+  background-color: #185adb;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.how-it-works__button:hover,
+.how-it-works__button:focus {
+  background-color: #1348af;
+}
+.how-it-works__button svg {
+  position: absolute;
+  right: 1.25em;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.how-it-works__button-close {
+  width: 7rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 0;
+  padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+}
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+.popup__displayed {
+  opacity: 1;
+  visibility: visible;
+}
+.popup__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.popup__text {
+  font-size: 1.4rem;
+  margin-bottom: 4rem;
+}

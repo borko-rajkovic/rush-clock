@@ -11,6 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
 import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
+import HowItWorks from "./components/HowItWorks/HowItWorks";
 
 function Content() {
   const { hideAdmin, displayDigitalClock, hueColor } =
@@ -35,6 +36,7 @@ function Content() {
         </div>
       </div>
       {!hideAdmin && <CopyLinks />}
+      {!hideAdmin && <HowItWorks />}
     </section>
   );
 }
