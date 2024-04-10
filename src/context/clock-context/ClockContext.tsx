@@ -51,6 +51,16 @@ const tickClock = async (
 ) => {
   await sleep(1000 - new Date().getMilliseconds());
 
+  /**
+   * In case any dependency for useEffect() is changed, it would
+   * run new tickClock function, so essentially 2 timers
+   * with different settings would compete.
+   *
+   * That is why we feed tickClock() with tickClockId (uuid), so we can
+   * recognize when current instance of timer is obsolete.
+   *
+   * Example: change rushCoefficient would trigger new tickClock()
+   */
   if (tickClockId !== currentTickId) {
     return;
   }
