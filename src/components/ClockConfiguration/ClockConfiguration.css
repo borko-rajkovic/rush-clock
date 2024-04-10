@@ -1,4 +1,5 @@
 .clock__configuration {
+  grid-area: 1/2 / span 2 / span 1;
   display: grid;
   grid-template: 4rem 4rem 3rem 4rem 24rem repeat(6, 3rem) 6rem 3rem/ 1fr;
   border: 2px dashed hsl(var(--hue-color), 74%, 70%, 100%);
@@ -7,7 +8,7 @@
 }
 
 .clock__configuration__title {
-  text-align: center;
+  text-align: left;
   font-size: var(--big-font-size);
   color: var(--title-color);
 }

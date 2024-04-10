@@ -12,6 +12,7 @@ import CopyLinks from "./components/CopyLinks/CopyLinks";
 import ClockConfiguration from "./components/ClockConfiguration/ClockConfiguration";
 import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
 import HowItWorks from "./components/HowItWorks/HowItWorks";
+import ClockSimulation from "./components/ClockSimulation/ClockSimulation";
 
 function Content() {
   const { hideAdmin, displayDigitalClock, hueColor } =
@@ -29,11 +30,12 @@ function Content() {
       <div
         className={`clock__container grid ${!hideAdmin && "display-config"}`}
       >
-        {!hideAdmin && <ClockConfiguration />}
         <div className="clock__content grid">
           <AnalogClock />
           {displayDigitalClock && <DigitalClock />}
         </div>
+        {!hideAdmin && <ClockConfiguration />}
+        {!hideAdmin && <ClockSimulation />}
       </div>
       {!hideAdmin && <CopyLinks />}
       {!hideAdmin && <HowItWorks />}
