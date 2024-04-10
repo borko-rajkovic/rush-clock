@@ -4,42 +4,28 @@ import { calculateEasedOutDate } from "../math-utils/easing";
 import { calculateAnalogClock } from "./analog/analog-clock-utils";
 import { calculateDigitalClock } from "./digital/digital-clock-utils";
 
-const calculateHourRushStartAndFinish = (date: Date) => {
-  const rushStart = new Date().setHours(date.getHours(), 0, 0, 0);
-  const rushFinish = rushStart + 60 * 60 * 1000;
-
-  return { rushStart, rushFinish };
-};
-
-const calculateDayRushStartAndFinish = () => {
-  const rushStart = new Date().setHours(0, 0, 0, 0);
-  const rushFinish = rushStart + 24 * 60 * 60 * 1000;
-
-  return { rushStart, rushFinish };
-};
-
-const calculateCustomRushStartAndFinish = (
-  rushTimes: RushTimesConfiguration
-) => {
-  const rushStart = rushTimes.customRushTimes.from;
-  const rushFinish = rushTimes.customRushTimes.to;
-
-  return { rushStart, rushFinish };
-};
-
-const calculateRushStartAndRushFinish = (
-  date: Date,
-  rushTimes: RushTimesConfiguration
-) => {
+const calculateRushStartAndRushFinish = (rushTimes: RushTimesConfiguration) => {
   switch (rushTimes.rushType) {
     case "hour":
-      return calculateHourRushStartAndFinish(date);
+      return {
+        rushStart: rushTimes.hourRushTimes.from,
+        rushFinish: rushTimes.hourRushTimes.to,
+      };
     case "day":
-      return calculateDayRushStartAndFinish();
+      return {
+        rushStart: rushTimes.dayRushTimes.from,
+        rushFinish: rushTimes.dayRushTimes.to,
+      };
     case "custom":
-      return calculateCustomRushStartAndFinish(rushTimes);
+      return {
+        rushStart: rushTimes.customRushTimes.from,
+        rushFinish: rushTimes.customRushTimes.to,
+      };
     default:
-      return calculateHourRushStartAndFinish(date);
+      return {
+        rushStart: rushTimes.hourRushTimes.from,
+        rushFinish: rushTimes.hourRushTimes.to,
+      };
   }
 };
 
@@ -48,10 +34,7 @@ export const calculateClock = (
   rushTimes: RushTimesConfiguration,
   date: Date
 ): ClockContextType => {
-  const { rushStart, rushFinish } = calculateRushStartAndRushFinish(
-    date,
-    rushTimes
-  );
+  const { rushStart, rushFinish } = calculateRushStartAndRushFinish(rushTimes);
 
   const easedOutDate = calculateEasedOutDate(
     +date,
