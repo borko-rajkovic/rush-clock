@@ -4,7 +4,9 @@ import { calculateEasedOutDate } from "../math-utils/easing";
 import { calculateAnalogClock } from "./analog/analog-clock-utils";
 import { calculateDigitalClock } from "./digital/digital-clock-utils";
 
-const calculateRushStartAndRushFinish = (rushTimes: RushTimesConfiguration) => {
+export const getRushStartAndRushFinish = (
+  rushTimes: RushTimesConfiguration
+) => {
   switch (rushTimes.rushType) {
     case "hour":
       return {
@@ -34,7 +36,7 @@ export const calculateClock = (
   rushTimes: RushTimesConfiguration,
   date: Date
 ): ClockContextType => {
-  const { rushStart, rushFinish } = calculateRushStartAndRushFinish(rushTimes);
+  const { rushStart, rushFinish } = getRushStartAndRushFinish(rushTimes);
 
   const easedOutDate = calculateEasedOutDate(
     +date,

@@ -1,7 +1,11 @@
-import moment from "moment";
 import "./CustomRushTypeConfiguration.css";
 import { RushTimesConfiguration } from "../../../../context/features-context/RushTimesConfiguration";
 import { useState } from "react";
+import {
+  CUSTOM_DATE_FORMAT,
+  customDateStringToMoment,
+  numberToCustomDateString,
+} from "../../../../context/clock-context/clock-utils/moment-utils/moment-utils";
 
 function CustomRushTypeConfiguration({
   rushTimes,
@@ -10,18 +14,16 @@ function CustomRushTypeConfiguration({
   rushTimes: RushTimesConfiguration;
   setRushTimes: React.Dispatch<React.SetStateAction<RushTimesConfiguration>>;
 }) {
-  const initialDateFrom = moment(rushTimes.customRushTimes.from).format(
-    "YYYY-MM-DD HH:mm:ss"
+  const initialDateFrom = numberToCustomDateString(
+    rushTimes.customRushTimes.from
   );
-  const initialDateTo = moment(rushTimes.customRushTimes.to).format(
-    "YYYY-MM-DD HH:mm:ss"
-  );
+  const initialDateTo = numberToCustomDateString(rushTimes.customRushTimes.to);
 
   const [customDateFrom, setCustomDateFrom] = useState(initialDateFrom);
   const [customDateTo, setCustomDateTo] = useState(initialDateTo);
 
-  const momentDateFrom = moment(customDateFrom, "YYYY-MM-DD HH:mm:ss");
-  const momentDateTo = moment(customDateTo, "YYYY-MM-DD HH:mm:ss");
+  const momentDateFrom = customDateStringToMoment(customDateFrom);
+  const momentDateTo = customDateStringToMoment(customDateTo);
 
   const isCustomDateValid = (
     input: string,
@@ -31,7 +33,7 @@ function CustomRushTypeConfiguration({
       return false;
     }
 
-    const momentDate = moment(input, "YYYY-MM-DD HH:mm:ss");
+    const momentDate = customDateStringToMoment(input);
 
     if (!momentDate.isValid()) {
       return false;
@@ -62,7 +64,7 @@ function CustomRushTypeConfiguration({
         Unlike <strong>Hourly Rush Clock</strong> or{" "}
         <strong>Daily Rush Clock</strong>, this type of Rush Clock will rush
         only in the{" "}
-        <abbr data-tooltip='Time format: "YYYY-MM-DD HH:mm:ss"' title="">
+        <abbr data-tooltip={`Time format: "${CUSTOM_DATE_FORMAT}"`} title="">
           time range
         </abbr>{" "}
         you specify here:
@@ -77,16 +79,13 @@ function CustomRushTypeConfiguration({
             value={customDateFrom}
             onChange={(e) => {
               const newCustomDateFrom = e.target.value;
-              const newDateFrom = moment(
-                newCustomDateFrom,
-                "YYYY-MM-DD HH:mm:ss"
-              );
+              const newDateFrom = customDateStringToMoment(newCustomDateFrom);
               setCustomDateFrom(newCustomDateFrom);
               if (
                 isCustomDateValid(newCustomDateFrom, { dateFrom: newDateFrom })
               ) {
                 setCustomDates(
-                  +moment(newCustomDateFrom, "YYYY-MM-DD HH:mm:ss").toDate(),
+                  +customDateStringToMoment(newCustomDateFrom).toDate(),
                   +momentDateTo.toDate()
                 );
               }
@@ -106,12 +105,12 @@ function CustomRushTypeConfiguration({
             value={customDateTo}
             onChange={(e) => {
               const newCustomDateTo = e.target.value;
-              const newDateTo = moment(newCustomDateTo, "YYYY-MM-DD HH:mm:ss");
+              const newDateTo = customDateStringToMoment(newCustomDateTo);
               setCustomDateTo(newCustomDateTo);
               if (isCustomDateValid(newCustomDateTo, { dateTo: newDateTo })) {
                 setCustomDates(
                   +momentDateFrom.toDate(),
-                  +moment(newCustomDateTo, "YYYY-MM-DD HH:mm:ss").toDate()
+                  +customDateStringToMoment(newCustomDateTo).toDate()
                 );
               }
             }}
