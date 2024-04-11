@@ -11,7 +11,10 @@ const calculateHour12 = (date: Date) => {
   return hour.toString().padStart(2, "0");
 };
 
-export const calculateDigitalClock = (date: Date): DigitalClock => {
+export const calculateDigitalClock = (
+  easedDate: Date,
+  date: Date
+): DigitalClock => {
   const seconds = date.getSeconds().toString().padStart(2, "0");
   const minutes = date.getMinutes().toString().padStart(2, "0");
   const hour12 = calculateHour12(date);
@@ -22,6 +25,8 @@ export const calculateDigitalClock = (date: Date): DigitalClock => {
   const year = date.getFullYear().toString();
 
   return {
+    easedDate,
+    date,
     seconds,
     minutes,
     hour12,

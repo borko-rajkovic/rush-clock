@@ -45,7 +45,7 @@ export const calculateClock = (
     rushCoefficient
   );
 
-  const digital = calculateDigitalClock(date);
+  const digital = calculateDigitalClock(easedOutDate, date);
   const analog = calculateAnalogClock(easedOutDate, date);
 
   return { digital, analog };

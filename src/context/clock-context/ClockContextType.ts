@@ -1,4 +1,6 @@
 export type DigitalClock = {
+  easedDate: Date;
+  date: Date;
   seconds: string;
   minutes: string;
   hour12: string;
