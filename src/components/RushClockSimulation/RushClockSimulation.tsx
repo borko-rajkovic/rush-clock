@@ -35,6 +35,7 @@ function ClockSimulation() {
         <input
           id="clockSimulationSlider"
           type="range"
+          className="range-style"
           min={0}
           max={1}
           step={0.001}
