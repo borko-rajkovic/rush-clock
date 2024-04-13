@@ -95,3 +95,15 @@ body {
   grid-template: 2fr 3fr/1fr 1fr;
   column-gap: 1rem;
 }
+
+.screen-resolution-guard {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen-resolution-guard__content {
+  text-align: center;
+  margin: 2rem;
+}

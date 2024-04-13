@@ -13,6 +13,7 @@ import ClockConfiguration from "./components/ClockConfiguration/ClockConfigurati
 import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
 import HowItWorks from "./components/HowItWorks/HowItWorks";
 import ClockSimulation from "./components/RushClockSimulation/RushClockSimulation";
+import ScreenResolutionGuard from "./ScreenResolutionGuard";
 
 function Content() {
   const { hideAdmin, displayDigitalClock, hueColor } =
@@ -48,7 +49,9 @@ function App() {
     <BrowserRouter>
       <ContextFeatures>
         <ContextClock>
-          <Content />
+          <ScreenResolutionGuard>
+            <Content />
+          </ScreenResolutionGuard>
         </ContextClock>
       </ContextFeatures>
     </BrowserRouter>
