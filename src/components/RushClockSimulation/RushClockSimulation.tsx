@@ -16,15 +16,23 @@ function ClockSimulation() {
 
   const simulatedTime = mapInRange(sliderValue, 0, 1, rushStart, rushFinish);
 
-  const easedSimulatedTime = calculateClock(
+  const regularSimulatedClock = calculateClock(
+    1,
+    rushTimes,
+    new Date(simulatedTime)
+  );
+
+  const easedSimulatedClock = calculateClock(
     rushCoefficient,
     rushTimes,
     new Date(simulatedTime)
   );
 
-  const regularClock = numberToCustomDateString(simulatedTime);
+  const regularClock = numberToCustomDateString(
+    +regularSimulatedClock.digital.easedDate
+  );
   const rushClock = numberToCustomDateString(
-    +easedSimulatedTime.digital.easedDate
+    +easedSimulatedClock.digital.easedDate
   );
 
   return (
