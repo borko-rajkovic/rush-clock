@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import "./RushClockSimulation.css";
-import { FeaturesContext } from "../../context/features-context/FeaturesContext";
 import {
   calculateClock,
   getRushStartAndRushFinish,
 } from "../../context/clock-context/clock-utils/clock-utils";
-import { numberToCustomDateString } from "../../context/clock-context/clock-utils/moment-utils/moment-utils";
 import { mapInRange } from "../../context/clock-context/math-utils/range";
+import { FeaturesContext } from "../../context/features-context/FeaturesContext";
+import AnalogSimulationClock from "./AnalogSimulationClock/AnalogSimulationClock";
+import "./RushClockSimulation.css";
 
 function ClockSimulation() {
   const { rushTimes, rushCoefficient } = useContext(FeaturesContext);
@@ -28,18 +28,11 @@ function ClockSimulation() {
     new Date(simulatedTime)
   );
 
-  const regularClock = numberToCustomDateString(
-    +regularSimulatedClock.digital.easedDate
-  );
-  const rushClock = numberToCustomDateString(
-    +easedSimulatedClock.digital.easedDate
-  );
-
   return (
     <div className="clock__simulation">
-      <div className="clock__simulation__title">Rush Clock Simulation</div>
+      <div className="clock__simulation__title">Simulation</div>
       <div className="clock__simulation_content">
-        <div>Regular clock: {regularClock}</div>
+        <AnalogSimulationClock clock={regularSimulatedClock} />
         <input
           id="clockSimulationSlider"
           type="range"
@@ -50,7 +43,7 @@ function ClockSimulation() {
           value={sliderValue}
           onChange={(e) => setSliderValue(Number(e.target.value))}
         ></input>
-        <div>Rush Clock: {rushClock}</div>
+        <AnalogSimulationClock clock={easedSimulatedClock} />
       </div>
     </div>
   );

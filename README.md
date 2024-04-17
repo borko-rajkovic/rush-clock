@@ -9,7 +9,7 @@ Clock that rushes.
 - [x] Rush clock
 - [x] Customize rush coefficient
 - [x] Show a faded real clock
-- [ ] Preview rush behavior
+- [x] Preview rush behavior
 - [x] Generate links to Standalone and Embedded Rush Clock
 - [x] Rush in a selected time range
 - [x] Color theme
@@ -31,10 +31,9 @@ Big thanks go to a repo from which this design for the analog clock was taken ov
 
 <!--
 
-- rush preview
 - more easing functions (?)
 - icon
-- Splash screen
+- How it works screen
 
 UI:
 
