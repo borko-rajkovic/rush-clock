@@ -27,4 +27,6 @@ export type FeaturesContextType = {
   alarmSound: HTMLAudioElement;
   startAlarm: React.Dispatch<React.SetStateAction<void>>;
   stopAlarm: React.Dispatch<React.SetStateAction<void>>;
+  simulationClockSliderValue: number;
+  setSimulationClockSliderValue: React.Dispatch<React.SetStateAction<number>>;
 };

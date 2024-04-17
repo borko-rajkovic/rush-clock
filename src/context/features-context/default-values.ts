@@ -43,4 +43,6 @@ export const FEATURE_CONTEXT_DEFAULT_VALUES: FeaturesContextType = {
   alarmSound: ALARM_SOUND,
   startAlarm: () => {},
   stopAlarm: () => {},
+  simulationClockSliderValue: 0,
+  setSimulationClockSliderValue: () => {},
 };

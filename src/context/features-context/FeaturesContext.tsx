@@ -72,6 +72,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [alarm, setAlarm] = useState(initialAlarm);
   const [alarmRinging, setAlarmRinging] = useState(false);
   const [hueColor, setHueColor] = useState(initialHueColor);
+  const [simulationClockSliderValue, setSimulationClockSliderValue] =
+    useState(0);
 
   const startAlarm = () => {
     if (!alarm) {
@@ -103,6 +105,9 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
     setAlarm(FEATURE_CONTEXT_DEFAULT_VALUES.alarm);
     setAlarmRinging(FEATURE_CONTEXT_DEFAULT_VALUES.alarmRinging);
     setHueColor(FEATURE_CONTEXT_DEFAULT_VALUES.hueColor);
+    setSimulationClockSliderValue(
+      FEATURE_CONTEXT_DEFAULT_VALUES.simulationClockSliderValue
+    );
   };
 
   return (
@@ -134,6 +139,8 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
         alarmSound: ALARM_SOUND,
         startAlarm,
         stopAlarm,
+        simulationClockSliderValue,
+        setSimulationClockSliderValue,
       }}
     >
       {children}

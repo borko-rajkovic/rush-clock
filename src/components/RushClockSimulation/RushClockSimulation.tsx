@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   calculateClock,
   getRushStartAndRushFinish,
@@ -9,8 +9,12 @@ import AnalogSimulationClock from "./AnalogSimulationClock/AnalogSimulationClock
 import "./RushClockSimulation.css";
 
 function ClockSimulation() {
-  const { rushTimes, rushCoefficient } = useContext(FeaturesContext);
-  const [sliderValue, setSliderValue] = useState(0);
+  const {
+    rushTimes,
+    rushCoefficient,
+    simulationClockSliderValue: sliderValue,
+    setSimulationClockSliderValue: setSliderValue,
+  } = useContext(FeaturesContext);
 
   const { rushStart, rushFinish } = getRushStartAndRushFinish(rushTimes);
 

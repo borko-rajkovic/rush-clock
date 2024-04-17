@@ -40,5 +40,4 @@ UI:
 Colors
 Shadow on the clock circle
 Hour numbers/visuals (number per each hour, lines at every second)
-
   -->
