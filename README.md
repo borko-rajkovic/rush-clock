@@ -33,7 +33,6 @@ Big thanks go to a repo from which this design for the analog clock was taken ov
 
 - more easing functions (?)
 - icon
-- How it works screen
 
 UI:
 
