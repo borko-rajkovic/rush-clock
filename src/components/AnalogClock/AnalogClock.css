@@ -1,4 +1,5 @@
 .clock__circle {
+  background-color: var(--body-color);
   border-style: dashed;
   border-color: hwb(208 94% 0%);
   position: relative;

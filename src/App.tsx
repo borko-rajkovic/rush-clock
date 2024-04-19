@@ -24,6 +24,11 @@ function Content() {
       className={`clock container ${hideAdmin && "container__fill_height"}`}
     >
       {!hideAdmin && <ForkMeOnGithub />}
+      {hideAdmin && (
+        <style
+          dangerouslySetInnerHTML={{ __html: `body {background-color: unset}` }}
+        ></style>
+      )}
       <style
         dangerouslySetInnerHTML={{ __html: `:root {--hue-color: ${hueColor}}` }}
       ></style>
