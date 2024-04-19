@@ -8,7 +8,6 @@ import {
   calculateHourRushTimes,
   initialDate,
 } from "../../../initial-date";
-import { floorToSecond } from "../../math-utils/rounding";
 
 let lastUpdateTimestamp = initialDate;
 
@@ -16,11 +15,7 @@ export const updateRushTimes = (
   date: Date,
   setRushTimes: React.Dispatch<SetStateAction<RushTimesConfiguration>>
 ) => {
-  if (
-    date.getMinutes() === 0 &&
-    date.getSeconds() === 0 &&
-    floorToSecond(lastUpdateTimestamp) !== floorToSecond(new Date())
-  ) {
+  if (lastUpdateTimestamp.getHours() !== new Date().getHours()) {
     lastUpdateTimestamp = new Date();
 
     const hourRushTimes: RushTimes = calculateHourRushTimes(date);
