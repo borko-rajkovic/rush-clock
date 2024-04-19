@@ -2,10 +2,6 @@
   "name": "rush-clock",
   "private": true,
   "version": "0.0.1",
-  "baseUrl": {
-    "useCustomBaseUrl": true,
-    "baseUrlPrefix": "/assets/static/rush-clock/version-"
-  },
   "type": "module",
   "scripts": {
     "dev": "vite",
