@@ -1,8 +1,7 @@
+import { easeOut } from "./easing-functions/easeOut";
 import { mapInRange, normalize } from "./range";
 
-const easeOut = (x: number, coefficient = 2): number => {
-  return 1 - Math.pow(1 - x, coefficient);
-};
+const easingFunction = easeOut;
 
 export const calculateEasedOutDate = (
   date: number,
@@ -16,7 +15,7 @@ export const calculateEasedOutDate = (
 
   const currentPosition = normalize(date, easeStart, easeFinish);
 
-  const easedOutNormalized = easeOut(currentPosition, rushCoefficient);
+  const easedOutNormalized = easingFunction(currentPosition, rushCoefficient);
 
   const easedOut = mapInRange(easedOutNormalized, 0, 1, easeStart, easeFinish);
 
