@@ -11,11 +11,12 @@ function AlarmConfiguration() {
   useEffect(() => {
     if (play) {
       alarmSound.play();
+      alarmSound.loop = true;
     } else {
       alarmSound.pause();
       alarmSound.currentTime = 0;
     }
-  }, [alarmSound, play]);
+  }, [alarmSound, play, setAlarm]);
 
   return (
     <div className="clock__configuration__alarm_configuration">
