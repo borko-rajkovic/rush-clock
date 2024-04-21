@@ -75,22 +75,24 @@ const ContextFeatures = ({ children }: { children: React.ReactNode }) => {
   const [simulationClockSliderValue, setSimulationClockSliderValue] =
     useState(0);
 
+  const stopAlarm = () => {
+    ALARM_SOUND.pause();
+    ALARM_SOUND.currentTime = 0;
+    setAlarmRinging(false);
+  };
+
   const startAlarm = () => {
     if (!alarm) {
       return;
     }
 
     ALARM_SOUND.play();
+    ALARM_SOUND.loop = true;
     ALARM_SOUND.onended = function () {
       setAlarmRinging(false);
     };
     setAlarmRinging(true);
-  };
-
-  const stopAlarm = () => {
-    ALARM_SOUND.pause();
-    ALARM_SOUND.currentTime = 0;
-    setAlarmRinging(false);
+    setTimeout(stopAlarm, 60000);
   };
 
   const resetConfiguration = () => {
