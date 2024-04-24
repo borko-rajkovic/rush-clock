@@ -2,7 +2,7 @@
 
 :root {
   /*========== Colors ==========*/
-  --hue-color: 240;
+  /* --hue-color: 240; */
 
   --first-color: hsl(var(--hue-color), 53%, 49%);
   --title-color: hsl(var(--hue-color), 53%, 15%);
@@ -97,6 +97,8 @@ body {
 }
 
 .screen-resolution-guard {
+  --hue-color: 240;
+  background-color: hsl(var(--hue-color), 24%, 94%);
   height: 100vh;
   display: flex;
   align-items: center;
