@@ -4,6 +4,8 @@
 
 Clock that rushes.
 
+![RushClockAdmin](./doc/rush-clock-admin.png)
+
 ## Features
 
 - [x] Rush clock
