@@ -1,0 +1,45 @@
+button.styled-button {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+button.styled-button:focus {
+  outline: none;
+}
+
+button.styled-button div {
+  width: 2rem;
+  height: 0.25rem;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+  background-color: #444444;
+}
+
+button.styled-button__open div {
+  background-color: #0d0c1d;
+}
+
+button.styled-button__open div:first-child {
+  transform: rotate(45deg);
+}
+
+button.styled-button__open div:nth-child(2) {
+  opacity: 0;
+}
+
+button.styled-button__open div:last-child {
+  transform: rotate(-45deg);
+}
