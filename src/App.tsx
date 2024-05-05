@@ -13,9 +13,9 @@ import ClockConfiguration from "./components/ClockConfiguration/ClockConfigurati
 import ForkMeOnGithub from "./components/ForkMeOnGithub/ForkMeOnGithub";
 import HowItWorks from "./components/HowItWorks/HowItWorks";
 import ClockSimulation from "./components/RushClockSimulation/RushClockSimulation";
-import ScreenResolutionGuard from "./ScreenResolutionGuard";
+import ScreenResolutionGuard, { MINIMUM_WIDTH } from "./ScreenResolutionGuard";
 
-function Content() {
+function Desktop() {
   const { hideAdmin, displayDigitalClock, hueColor } =
     useContext(FeaturesContext);
 
@@ -49,14 +49,23 @@ function Content() {
   );
 }
 
+function Mobile() {
+  return (
+    <div className="screen-resolution-guard">
+      <div className="screen-resolution-guard__content">
+        Minimum supported width for admin&nbsp;is&nbsp;
+        <strong>{MINIMUM_WIDTH}</strong>px,&nbsp;right?
+      </div>
+    </div>
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
       <ContextFeatures>
         <ContextClock>
-          <ScreenResolutionGuard>
-            <Content />
-          </ScreenResolutionGuard>
+          <ScreenResolutionGuard mobile={<Mobile />} desktop={<Desktop />} />
         </ContextClock>
       </ContextFeatures>
     </BrowserRouter>
