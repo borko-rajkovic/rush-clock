@@ -4,10 +4,10 @@ import ScreenResolutionGuard from "./guards/ScreenResolutionGuard";
 import "./Tooltip.css";
 import ContextClock from "./context/clock-context/ClockContext";
 import ContextFeatures from "./context/features-context/FeaturesContext";
-import DesktopLayout from "./layout/DesktopLayout";
-import MobileLayout from "./layout/MobileLayout";
 import AdminGuard from "./guards/AdminGuard";
 import ColorGuard from "./guards/ColorGuard";
+import MobileLayout from "./layout/mobile/MobileLayout";
+import DesktopLayout from "./layout/desktop/DesktopLayout";
 
 function App() {
   return (

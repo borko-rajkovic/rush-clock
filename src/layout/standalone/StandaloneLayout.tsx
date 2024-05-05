@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import AnalogClock from "../components/AnalogClock/AnalogClock";
-import DigitalClock from "../components/DigitalClock/DigitalClock";
-import { FeaturesContext } from "../context/features-context/FeaturesContext";
+import AnalogClock from "../../components/AnalogClock/AnalogClock";
+import DigitalClock from "../../components/DigitalClock/DigitalClock";
+import { FeaturesContext } from "../../context/features-context/FeaturesContext";
 
 function StandaloneLayout() {
   const { displayDigitalClock } = useContext(FeaturesContext);
