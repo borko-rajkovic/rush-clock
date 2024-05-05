@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import useWindowDimensions from "./hooks/use-window-dimensions-hook";
-import { FeaturesContext } from "./context/features-context/FeaturesContext";
+import useWindowDimensions from "../hooks/use-window-dimensions-hook";
+import { FeaturesContext } from "../context/features-context/FeaturesContext";
 
 export const MINIMUM_WIDTH = 1024;
 
