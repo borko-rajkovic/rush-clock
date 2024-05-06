@@ -1,0 +1,58 @@
+.copy-link-mobile {
+  --height: 36px;
+  --roundness: 4px;
+
+  display: flex;
+  margin: 0.5rem 1rem 2rem 1rem;
+}
+
+.copy-link-mobile-label {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 0 1rem;
+}
+
+.copy-link-mobile-input {
+  flex: 1;
+  padding: 0 8px;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+  border-right: none;
+  outline: none;
+  border-radius: var(--roundness) 0px 0px var(--roundness);
+}
+
+.copy-link-mobile-input:hover {
+  background-color: #eeeeee;
+}
+
+.copy-link-mobile-button {
+  flex-shrink: 0;
+  width: var(--height);
+  height: var(--height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dddddd;
+  color: #333333;
+  outline: none;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.copy-link-mobile-button:hover {
+  background-color: #cccccc;
+}
+
+.copy-link-mobile-button:active {
+  background-color: #bbbbbb;
+}
+
+.copy-link-mobile-button {
+  border-radius: 0px var(--roundness) var(--roundness) 0px;
+}
+
+.copy-link-mobile:last-child {
+  margin-bottom: 2rem;
+}
