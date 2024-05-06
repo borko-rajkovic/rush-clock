@@ -1,5 +1,5 @@
 .copy-link-container {
-  width: clamp(20rem, 40rem, 60rem);
+  width: 40rem;
   margin-top: 2rem;
 }
 
