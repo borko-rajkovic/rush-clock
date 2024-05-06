@@ -3,7 +3,7 @@ import { FeaturesContext } from "../../../context/features-context/FeaturesConte
 import CustomRushTypeConfiguration from "./CustomRushTypeConfiguration/CustomRushTypeConfiguration";
 import "./RushTypeConfiguration.css";
 
-function RushTypeConfiguration() {
+function RushTypeConfiguration({ mobile }: { mobile?: boolean }) {
   const { rushTimes, setRushTimes } = useContext(FeaturesContext);
 
   const rushType = rushTimes.rushType;
@@ -27,7 +27,11 @@ function RushTypeConfiguration() {
         <label className="tabs__label" htmlFor="hour">
           Hourly
         </label>
-        <div className="tabs__panel">
+        <div
+          className={`tabs__panel ${
+            mobile ? "tabs__panel__unbounded_height" : ""
+          }`}
+        >
           <h1>Hourly Rush Clock</h1>
           <p>Default Rush Clock type.</p>
           <p>
@@ -51,7 +55,11 @@ function RushTypeConfiguration() {
         <label className="tabs__label" htmlFor="day">
           Daily
         </label>
-        <div className="tabs__panel">
+        <div
+          className={`tabs__panel ${
+            mobile ? "tabs__panel__unbounded_height" : ""
+          }`}
+        >
           <h1>Daily Rush Clock</h1>
           <p>
             Similar to <strong>Hourly Rush Clock</strong>, when selected clock
@@ -75,7 +83,11 @@ function RushTypeConfiguration() {
         <label className="tabs__label" htmlFor="custom">
           Custom
         </label>
-        <div className="tabs__panel">
+        <div
+          className={`tabs__panel ${
+            mobile ? "tabs__panel__unbounded_height" : ""
+          }`}
+        >
           <CustomRushTypeConfiguration
             rushTimes={rushTimes}
             setRushTimes={setRushTimes}
