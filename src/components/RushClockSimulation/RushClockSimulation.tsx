@@ -10,7 +10,7 @@ import "./RushClockSimulation.css";
 import { calculateAnalogClock } from "../../context/clock-context/clock-utils/analog/analog-clock-utils";
 import { calculateDigitalClock } from "../../context/clock-context/clock-utils/digital/digital-clock-utils";
 
-function ClockSimulation() {
+function ClockSimulation({ mobile }: { mobile?: boolean }) {
   const {
     rushTimes,
     rushCoefficient,
@@ -40,8 +40,12 @@ function ClockSimulation() {
   );
 
   return (
-    <div className="clock__simulation">
-      <div className="clock__simulation__title">Simulation</div>
+    <div
+      className={`clock__simulation ${
+        mobile ? "clock__simulation__mobile" : ""
+      }`}
+    >
+      {!mobile && <div className="clock__simulation__title">Simulation</div>}
       <div className="clock__simulation_content">
         <AnalogSimulationClock
           clock={{

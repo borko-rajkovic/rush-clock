@@ -7,6 +7,16 @@
   padding: 1.5rem;
 }
 
+.clock__simulation__mobile {
+  border: unset;
+  height: 40rem;
+  max-width: 40rem;
+  margin: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: -2rem;
+}
+
 .clock__simulation__title {
   text-align: left;
   font-size: var(--big-font-size);
