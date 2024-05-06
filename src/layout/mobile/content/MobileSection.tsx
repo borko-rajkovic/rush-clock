@@ -1,3 +1,4 @@
+import ClockSimulation from "../../../components/RushClockSimulation/RushClockSimulation";
 import ClockConfigurationSection from "./sections/ClockConfigurationSection";
 import HowItWorksSection from "./sections/HowItWorksSection";
 import RushClockSection from "./sections/RushClockSection";
@@ -12,6 +13,11 @@ const MOBILE_SECTIONS = [
     path: "configuration",
     title: "Configuration",
     component: <ClockConfigurationSection />,
+  },
+  {
+    path: "simulation",
+    title: "Simulation",
+    component: <ClockSimulation mobile />,
   },
   {
     path: "how-it-works",
