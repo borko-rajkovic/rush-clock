@@ -71,8 +71,15 @@
   overflow: auto;
 }
 
-.popup__content_mt5r {
-  margin-top: 5rem;
+.popup__content_mobile {
+  margin: 0rem 1rem 2rem 1rem;
+  position: unset;
+  transform: unset;
+  top: unset;
+  left: unset;
+  width: unset;
+  overflow: unset;
+  max-height: unset;
 }
 
 .popup__text {
