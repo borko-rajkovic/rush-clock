@@ -1,6 +1,6 @@
 function HowItWorksSection() {
   return (
-    <div className="popup__content popup__content_mt5r">
+    <div className="popup__content popup__content_mobile">
       <h1>Welcome to Rush Clock!</h1>
       <p>
         Have you ever wanted to have just a little bit more time when your
