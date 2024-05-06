@@ -71,6 +71,10 @@
   overflow: auto;
 }
 
+.popup__content_mt5r {
+  margin-top: 5rem;
+}
+
 .popup__text {
   font-size: 1.4rem;
   margin-bottom: 4rem;
