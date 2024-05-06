@@ -35,9 +35,9 @@ function Menu({
         <IoSettingsOutline className="styled_menu__icon" />
         <div
           className="styled_menu__item_label"
-          onClick={() => navigateTo("settings")}
+          onClick={() => navigateTo("configuration")}
         >
-          Settings
+          Configure
         </div>
       </div>
       <hr />

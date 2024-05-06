@@ -51,3 +51,18 @@
 .tabs__panel p {
   margin-top: 20px;
 }
+
+.tabs__panel__unbounded_height {
+  height: unset;
+}
+
+@media (max-width: 1024px) {
+  .tabs__label {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .tabs {
+    margin-bottom: 1rem;
+  }
+}
