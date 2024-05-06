@@ -1,0 +1,7 @@
+.mobile_section__title {
+  display: flex;
+  justify-content: center;
+  font-size: var(--big-font-size);
+  color: var(--title-color);
+  margin: 2.5rem 0;
+}

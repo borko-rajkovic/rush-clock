@@ -8,6 +8,7 @@ nav.styled_menu {
   text-align: left;
   padding: 2rem;
   position: absolute;
+  z-index: 100;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
@@ -23,7 +24,7 @@ nav.styled_menu > div {
   align-items: center;
   font-size: 1.5rem;
   text-transform: uppercase;
-  padding: 3rem 0;
+  padding: 2rem 0;
   font-weight: bold;
   letter-spacing: 0.2rem;
   color: #0d0c1d;
